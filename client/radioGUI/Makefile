@@ -110,3 +110,4 @@ help:
 	@echo "  help                   - Show this help"
 
 .PHONY: all clean compile package install test run run-with-jsimconnect run-without-jsimconnect build-without-jsimconnect build-with-jsimconnect install-jsimconnect site run-debug run-memory deps updates validate generate-sources help
+

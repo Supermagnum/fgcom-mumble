@@ -27,6 +27,9 @@ var FGComMumble = {
     audioHearAll:        0,
     forceEchoTestFRQ:    0,
     alwaysMumblePTT:     0,
+    defaultTxPower:      10.0,
+    defaultSquelch:       0.1,
+    defaultChannelWidth: 8.33,
   },
   configNodes: nil,
   
@@ -154,6 +157,25 @@ var FGComMumble = {
     me.configNodes.forceEchoTestNode = configRootNode.getNode("force-echotest-frq", 1);
     me.configNodes.forceEchoTestNode.setAttribute("userarchive", "n");
     me.configNodes.forceEchoTestNode.setBoolValue(me.defaults.forceEchoTestFRQ);
+    
+    # New advanced radio configuration nodes
+    me.configNodes.defaultTxPowerNode = configRootNode.getNode("default-tx-power", 1);
+    me.configNodes.defaultTxPowerNode.setAttribute("userarchive", "y");
+    if (me.configNodes.defaultTxPowerNode.getValue() == nil) {
+      me.configNodes.defaultTxPowerNode.setDoubleValue(me.defaults.defaultTxPower);
+    }
+    
+    me.configNodes.defaultSquelchNode = configRootNode.getNode("default-squelch", 1);
+    me.configNodes.defaultSquelchNode.setAttribute("userarchive", "y");
+    if (me.configNodes.defaultSquelchNode.getValue() == nil) {
+      me.configNodes.defaultSquelchNode.setDoubleValue(me.defaults.defaultSquelch);
+    }
+    
+    me.configNodes.defaultChannelWidthNode = configRootNode.getNode("default-channel-width", 1);
+    me.configNodes.defaultChannelWidthNode.setAttribute("userarchive", "y");
+    if (me.configNodes.defaultChannelWidthNode.getValue() == nil) {
+      me.configNodes.defaultChannelWidthNode.setDoubleValue(me.defaults.defaultChannelWidth);
+    }
     
     # Generic UDP output root tree, to be used by individual radio instances
     me.rootNodeOutput = me.rootNode.getNode("output", 1);

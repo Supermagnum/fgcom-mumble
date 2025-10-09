@@ -52,6 +52,9 @@
                     setprop("/addons/by-id/org.hallinger.flightgear.FGCom-mumble/audio-hear-all", fgcom_module.defaults.audioHearAll);
                     setprop("/addons/by-id/org.hallinger.flightgear.FGCom-mumble/always-mumble-ptt", fgcom_module.defaults.alwaysMumblePTT);
                     setprop("/addons/by-id/org.hallinger.flightgear.FGCom-mumble/force-echotest-frq", fgcom_module.defaults.forceEchoTestFRQ);
+                    setprop("/addons/by-id/org.hallinger.flightgear.FGCom-mumble/default-tx-power", fgcom_module.defaults.defaultTxPower);
+                    setprop("/addons/by-id/org.hallinger.flightgear.FGCom-mumble/default-squelch", fgcom_module.defaults.defaultSquelch);
+                    setprop("/addons/by-id/org.hallinger.flightgear.FGCom-mumble/default-channel-width", fgcom_module.defaults.defaultChannelWidth);
                     #tpl: setprop("/addons/by-id/org.hallinger.flightgear.FGCom-mumble/xx", fgcom_module.defaults.xxx);
                     # others are already set below
                 }
@@ -251,6 +254,75 @@
                 <property>/addons/by-id/org.hallinger.flightgear.FGCom-mumble/com-rdf-enabled</property>
             </checkbox>
             -->
+        </group>
+    </group>
+    
+    <hrule/>
+
+    <text>
+        <halign>left</halign>
+        <label>Radio Configuration (Advanced):</label>
+    </text>
+    <group>
+        <layout>hbox</layout>
+        <halign>left</halign>
+        <group>
+            <layout>hbox</layout>
+            
+            <default-padding>10</default-padding>
+            <empty><width>6</width><stretch>1</stretch></empty>
+        </group>
+        
+        <group>
+            <layout>table</layout>
+
+            <text>
+                <row>0</row>
+                <col>0</col>
+                <halign>left</halign>
+                <label>Default TX Power (Watts):</label>
+            </text>
+
+            <input>
+                <row>0</row>
+                <col>1</col>
+                <name>default-tx-power</name>
+                <height>25</height>
+                <halign>left</halign>
+                <property>/addons/by-id/org.hallinger.flightgear.FGCom-mumble/default-tx-power</property>
+            </input>
+
+            <text>
+                <row>1</row>
+                <col>0</col>
+                <halign>left</halign>
+                <label>Default Squelch (0.0-1.0):</label>
+            </text>
+
+            <input>
+                <row>1</row>
+                <col>1</col>
+                <name>default-squelch</name>
+                <height>25</height>
+                <halign>left</halign>
+                <property>/addons/by-id/org.hallinger.flightgear.FGCom-mumble/default-squelch</property>
+            </input>
+
+            <text>
+                <row>2</row>
+                <col>0</col>
+                <halign>left</halign>
+                <label>Default Channel Width (kHz):</label>
+            </text>
+
+            <input>
+                <row>2</row>
+                <col>1</col>
+                <name>default-channel-width</name>
+                <height>25</height>
+                <halign>left</halign>
+                <property>/addons/by-id/org.hallinger.flightgear.FGCom-mumble/default-channel-width</property>
+            </input>
         </group>
     </group>
     

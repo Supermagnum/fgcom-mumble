@@ -41,6 +41,22 @@ var GenericRadio = {
         me.fgcom_root.setValue("is-used", me.is_used);
         me.fgcom_rdf_enabled = me.fgcom_root.getNode("rdf-enabled", 1);
         me.fgcom_publish     = me.fgcom_root.getNode("publish", 1);
+        
+        # Initialize new advanced properties with defaults
+        me.fgcom_tx_power    = me.fgcom_root.getNode("tx-power", 1);
+        me.fgcom_squelch     = me.fgcom_root.getNode("cutoff-signal-quality", 1);
+        me.fgcom_channel_width = me.fgcom_root.getNode("selected-channel-width-khz", 1);
+        
+        # Set default values from configuration
+        if (me.fgcom_tx_power.getValue() == nil) {
+            me.fgcom_tx_power.setDoubleValue(FGComMumble.configNodes.defaultTxPowerNode.getDoubleValue());
+        }
+        if (me.fgcom_squelch.getValue() == nil) {
+            me.fgcom_squelch.setDoubleValue(FGComMumble.configNodes.defaultSquelchNode.getDoubleValue());
+        }
+        if (me.fgcom_channel_width.getValue() == nil) {
+            me.fgcom_channel_width.setDoubleValue(FGComMumble.configNodes.defaultChannelWidthNode.getDoubleValue());
+        }
 
         # Hash containing all listeners / timers / aliases, for the destructor.
         me.listeners = {};
@@ -65,12 +81,12 @@ var GenericRadio = {
             me.fields2props = {
                 # Map the fgcom-mumble protocol fields to properties
                 FRQ:     me.fgcom_root.getPath() ~ "/selected-mhz",
-                CWKHZ:   me.root.getPath()       ~ "/frequencies/selected-channel-width-khz",
+                CWKHZ:   me.fgcom_root.getPath() ~ "/selected-channel-width-khz",
                 PBT:     me.fgcom_root.getPath() ~ "/operable",
                 PTT:     me.root.getPath()       ~ "/ptt",
                 VOL:     me.fgcom_root.getPath() ~ "/volume",
-                PWR:     me.root.getPath()       ~ "/tx-power",
-                SQC:     me.root.getPath()       ~ "/cutoff-signal-quality",
+                PWR:     me.fgcom_root.getPath() ~ "/tx-power",
+                SQC:     me.fgcom_root.getPath() ~ "/cutoff-signal-quality",
                 RDF:     me.fgcom_root.getPath() ~ "/rdf-enabled",
                 PUBLISH: me.fgcom_root.getPath() ~ "/publish",
             };

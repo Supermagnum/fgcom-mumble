@@ -97,10 +97,24 @@ CMakeFiles/radio_propagation_tests_asan.dir/test_radio_propagation_tests_propert
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/radio_propagation_tests_asan.dir/test_radio_propagation_tests_properties.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/test_radio_propagation_tests_properties.cpp -o CMakeFiles/radio_propagation_tests_asan.dir/test_radio_propagation_tests_properties.cpp.s
 
+CMakeFiles/radio_propagation_tests_asan.dir/test_real_city_pairs.cpp.o: CMakeFiles/radio_propagation_tests_asan.dir/flags.make
+CMakeFiles/radio_propagation_tests_asan.dir/test_real_city_pairs.cpp.o: /home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/test_real_city_pairs.cpp
+CMakeFiles/radio_propagation_tests_asan.dir/test_real_city_pairs.cpp.o: CMakeFiles/radio_propagation_tests_asan.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/radio_propagation_tests_asan.dir/test_real_city_pairs.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/radio_propagation_tests_asan.dir/test_real_city_pairs.cpp.o -MF CMakeFiles/radio_propagation_tests_asan.dir/test_real_city_pairs.cpp.o.d -o CMakeFiles/radio_propagation_tests_asan.dir/test_real_city_pairs.cpp.o -c /home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/test_real_city_pairs.cpp
+
+CMakeFiles/radio_propagation_tests_asan.dir/test_real_city_pairs.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/radio_propagation_tests_asan.dir/test_real_city_pairs.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/test_real_city_pairs.cpp > CMakeFiles/radio_propagation_tests_asan.dir/test_real_city_pairs.cpp.i
+
+CMakeFiles/radio_propagation_tests_asan.dir/test_real_city_pairs.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/radio_propagation_tests_asan.dir/test_real_city_pairs.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/test_real_city_pairs.cpp -o CMakeFiles/radio_propagation_tests_asan.dir/test_real_city_pairs.cpp.s
+
 CMakeFiles/radio_propagation_tests_asan.dir/main.cpp.o: CMakeFiles/radio_propagation_tests_asan.dir/flags.make
 CMakeFiles/radio_propagation_tests_asan.dir/main.cpp.o: /home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/main.cpp
 CMakeFiles/radio_propagation_tests_asan.dir/main.cpp.o: CMakeFiles/radio_propagation_tests_asan.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/radio_propagation_tests_asan.dir/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/radio_propagation_tests_asan.dir/main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/radio_propagation_tests_asan.dir/main.cpp.o -MF CMakeFiles/radio_propagation_tests_asan.dir/main.cpp.o.d -o CMakeFiles/radio_propagation_tests_asan.dir/main.cpp.o -c /home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/main.cpp
 
 CMakeFiles/radio_propagation_tests_asan.dir/main.cpp.i: cmake_force
@@ -114,7 +128,7 @@ CMakeFiles/radio_propagation_tests_asan.dir/main.cpp.s: cmake_force
 CMakeFiles/radio_propagation_tests_asan.dir/test_radio_propagation_main.cpp.o: CMakeFiles/radio_propagation_tests_asan.dir/flags.make
 CMakeFiles/radio_propagation_tests_asan.dir/test_radio_propagation_main.cpp.o: /home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/test_radio_propagation_main.cpp
 CMakeFiles/radio_propagation_tests_asan.dir/test_radio_propagation_main.cpp.o: CMakeFiles/radio_propagation_tests_asan.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/radio_propagation_tests_asan.dir/test_radio_propagation_main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/radio_propagation_tests_asan.dir/test_radio_propagation_main.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/radio_propagation_tests_asan.dir/test_radio_propagation_main.cpp.o -MF CMakeFiles/radio_propagation_tests_asan.dir/test_radio_propagation_main.cpp.o.d -o CMakeFiles/radio_propagation_tests_asan.dir/test_radio_propagation_main.cpp.o -c /home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/test_radio_propagation_main.cpp
 
 CMakeFiles/radio_propagation_tests_asan.dir/test_radio_propagation_main.cpp.i: cmake_force
@@ -128,7 +142,7 @@ CMakeFiles/radio_propagation_tests_asan.dir/test_radio_propagation_main.cpp.s: c
 CMakeFiles/radio_propagation_tests_asan.dir/test_line_of_sight.cpp.o: CMakeFiles/radio_propagation_tests_asan.dir/flags.make
 CMakeFiles/radio_propagation_tests_asan.dir/test_line_of_sight.cpp.o: /home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/test_line_of_sight.cpp
 CMakeFiles/radio_propagation_tests_asan.dir/test_line_of_sight.cpp.o: CMakeFiles/radio_propagation_tests_asan.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/radio_propagation_tests_asan.dir/test_line_of_sight.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/radio_propagation_tests_asan.dir/test_line_of_sight.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/radio_propagation_tests_asan.dir/test_line_of_sight.cpp.o -MF CMakeFiles/radio_propagation_tests_asan.dir/test_line_of_sight.cpp.o.d -o CMakeFiles/radio_propagation_tests_asan.dir/test_line_of_sight.cpp.o -c /home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/test_line_of_sight.cpp
 
 CMakeFiles/radio_propagation_tests_asan.dir/test_line_of_sight.cpp.i: cmake_force
@@ -142,7 +156,7 @@ CMakeFiles/radio_propagation_tests_asan.dir/test_line_of_sight.cpp.s: cmake_forc
 CMakeFiles/radio_propagation_tests_asan.dir/test_frequency_propagation.cpp.o: CMakeFiles/radio_propagation_tests_asan.dir/flags.make
 CMakeFiles/radio_propagation_tests_asan.dir/test_frequency_propagation.cpp.o: /home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/test_frequency_propagation.cpp
 CMakeFiles/radio_propagation_tests_asan.dir/test_frequency_propagation.cpp.o: CMakeFiles/radio_propagation_tests_asan.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/radio_propagation_tests_asan.dir/test_frequency_propagation.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/radio_propagation_tests_asan.dir/test_frequency_propagation.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/radio_propagation_tests_asan.dir/test_frequency_propagation.cpp.o -MF CMakeFiles/radio_propagation_tests_asan.dir/test_frequency_propagation.cpp.o.d -o CMakeFiles/radio_propagation_tests_asan.dir/test_frequency_propagation.cpp.o -c /home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/test_frequency_propagation.cpp
 
 CMakeFiles/radio_propagation_tests_asan.dir/test_frequency_propagation.cpp.i: cmake_force
@@ -156,7 +170,7 @@ CMakeFiles/radio_propagation_tests_asan.dir/test_frequency_propagation.cpp.s: cm
 CMakeFiles/radio_propagation_tests_asan.dir/test_antenna_patterns.cpp.o: CMakeFiles/radio_propagation_tests_asan.dir/flags.make
 CMakeFiles/radio_propagation_tests_asan.dir/test_antenna_patterns.cpp.o: /home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/test_antenna_patterns.cpp
 CMakeFiles/radio_propagation_tests_asan.dir/test_antenna_patterns.cpp.o: CMakeFiles/radio_propagation_tests_asan.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/radio_propagation_tests_asan.dir/test_antenna_patterns.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/radio_propagation_tests_asan.dir/test_antenna_patterns.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/radio_propagation_tests_asan.dir/test_antenna_patterns.cpp.o -MF CMakeFiles/radio_propagation_tests_asan.dir/test_antenna_patterns.cpp.o.d -o CMakeFiles/radio_propagation_tests_asan.dir/test_antenna_patterns.cpp.o -c /home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/test_antenna_patterns.cpp
 
 CMakeFiles/radio_propagation_tests_asan.dir/test_antenna_patterns.cpp.i: cmake_force
@@ -170,7 +184,7 @@ CMakeFiles/radio_propagation_tests_asan.dir/test_antenna_patterns.cpp.s: cmake_f
 CMakeFiles/radio_propagation_tests_asan.dir/test_environmental_effects.cpp.o: CMakeFiles/radio_propagation_tests_asan.dir/flags.make
 CMakeFiles/radio_propagation_tests_asan.dir/test_environmental_effects.cpp.o: /home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/test_environmental_effects.cpp
 CMakeFiles/radio_propagation_tests_asan.dir/test_environmental_effects.cpp.o: CMakeFiles/radio_propagation_tests_asan.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/radio_propagation_tests_asan.dir/test_environmental_effects.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/radio_propagation_tests_asan.dir/test_environmental_effects.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/radio_propagation_tests_asan.dir/test_environmental_effects.cpp.o -MF CMakeFiles/radio_propagation_tests_asan.dir/test_environmental_effects.cpp.o.d -o CMakeFiles/radio_propagation_tests_asan.dir/test_environmental_effects.cpp.o -c /home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/test_environmental_effects.cpp
 
 CMakeFiles/radio_propagation_tests_asan.dir/test_environmental_effects.cpp.i: cmake_force
@@ -184,7 +198,7 @@ CMakeFiles/radio_propagation_tests_asan.dir/test_environmental_effects.cpp.s: cm
 CMakeFiles/radio_propagation_tests_asan.dir/test_noise_floor.cpp.o: CMakeFiles/radio_propagation_tests_asan.dir/flags.make
 CMakeFiles/radio_propagation_tests_asan.dir/test_noise_floor.cpp.o: /home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/test_noise_floor.cpp
 CMakeFiles/radio_propagation_tests_asan.dir/test_noise_floor.cpp.o: CMakeFiles/radio_propagation_tests_asan.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/radio_propagation_tests_asan.dir/test_noise_floor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/radio_propagation_tests_asan.dir/test_noise_floor.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/radio_propagation_tests_asan.dir/test_noise_floor.cpp.o -MF CMakeFiles/radio_propagation_tests_asan.dir/test_noise_floor.cpp.o.d -o CMakeFiles/radio_propagation_tests_asan.dir/test_noise_floor.cpp.o -c /home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/test_noise_floor.cpp
 
 CMakeFiles/radio_propagation_tests_asan.dir/test_noise_floor.cpp.i: cmake_force
@@ -198,7 +212,7 @@ CMakeFiles/radio_propagation_tests_asan.dir/test_noise_floor.cpp.s: cmake_force
 CMakeFiles/radio_propagation_tests_asan.dir/home/haaken/github-projects/fgcom-mumble/client/mumble-plugin/lib/propagation_physics.cpp.o: CMakeFiles/radio_propagation_tests_asan.dir/flags.make
 CMakeFiles/radio_propagation_tests_asan.dir/home/haaken/github-projects/fgcom-mumble/client/mumble-plugin/lib/propagation_physics.cpp.o: /home/haaken/github-projects/fgcom-mumble/client/mumble-plugin/lib/propagation_physics.cpp
 CMakeFiles/radio_propagation_tests_asan.dir/home/haaken/github-projects/fgcom-mumble/client/mumble-plugin/lib/propagation_physics.cpp.o: CMakeFiles/radio_propagation_tests_asan.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/radio_propagation_tests_asan.dir/home/haaken/github-projects/fgcom-mumble/client/mumble-plugin/lib/propagation_physics.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/radio_propagation_tests_asan.dir/home/haaken/github-projects/fgcom-mumble/client/mumble-plugin/lib/propagation_physics.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/radio_propagation_tests_asan.dir/home/haaken/github-projects/fgcom-mumble/client/mumble-plugin/lib/propagation_physics.cpp.o -MF CMakeFiles/radio_propagation_tests_asan.dir/home/haaken/github-projects/fgcom-mumble/client/mumble-plugin/lib/propagation_physics.cpp.o.d -o CMakeFiles/radio_propagation_tests_asan.dir/home/haaken/github-projects/fgcom-mumble/client/mumble-plugin/lib/propagation_physics.cpp.o -c /home/haaken/github-projects/fgcom-mumble/client/mumble-plugin/lib/propagation_physics.cpp
 
 CMakeFiles/radio_propagation_tests_asan.dir/home/haaken/github-projects/fgcom-mumble/client/mumble-plugin/lib/propagation_physics.cpp.i: cmake_force
@@ -213,6 +227,7 @@ CMakeFiles/radio_propagation_tests_asan.dir/home/haaken/github-projects/fgcom-mu
 radio_propagation_tests_asan_OBJECTS = \
 "CMakeFiles/radio_propagation_tests_asan.dir/test_solar_data_impact.cpp.o" \
 "CMakeFiles/radio_propagation_tests_asan.dir/test_radio_propagation_tests_properties.cpp.o" \
+"CMakeFiles/radio_propagation_tests_asan.dir/test_real_city_pairs.cpp.o" \
 "CMakeFiles/radio_propagation_tests_asan.dir/main.cpp.o" \
 "CMakeFiles/radio_propagation_tests_asan.dir/test_radio_propagation_main.cpp.o" \
 "CMakeFiles/radio_propagation_tests_asan.dir/test_line_of_sight.cpp.o" \
@@ -227,6 +242,7 @@ radio_propagation_tests_asan_EXTERNAL_OBJECTS =
 
 radio_propagation_tests_asan: CMakeFiles/radio_propagation_tests_asan.dir/test_solar_data_impact.cpp.o
 radio_propagation_tests_asan: CMakeFiles/radio_propagation_tests_asan.dir/test_radio_propagation_tests_properties.cpp.o
+radio_propagation_tests_asan: CMakeFiles/radio_propagation_tests_asan.dir/test_real_city_pairs.cpp.o
 radio_propagation_tests_asan: CMakeFiles/radio_propagation_tests_asan.dir/main.cpp.o
 radio_propagation_tests_asan: CMakeFiles/radio_propagation_tests_asan.dir/test_radio_propagation_main.cpp.o
 radio_propagation_tests_asan: CMakeFiles/radio_propagation_tests_asan.dir/test_line_of_sight.cpp.o
@@ -240,7 +256,7 @@ radio_propagation_tests_asan: rapidcheck/librapidcheck.a
 radio_propagation_tests_asan: /usr/lib/x86_64-linux-gnu/libgtest_main.a
 radio_propagation_tests_asan: /usr/lib/x86_64-linux-gnu/libgtest.a
 radio_propagation_tests_asan: CMakeFiles/radio_propagation_tests_asan.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable radio_propagation_tests_asan"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/haaken/github-projects/fgcom-mumble/test/radio_propagation_tests/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable radio_propagation_tests_asan"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/radio_propagation_tests_asan.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

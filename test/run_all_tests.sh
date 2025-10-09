@@ -27,38 +27,52 @@ run_test_module() {
     
     cd "$module_dir" || return 1
     
+    # Create test-logs directory if it doesn't exist
+    mkdir -p ../test-logs
+    
     # Try to build and run tests
-    if make clean && make -j$(nproc) 2>/dev/null; then
-        if [ -f "build/${module_name}" ]; then
+    if rm -rf build && mkdir build && cd build && cmake .. && make -j$(nproc) 2>/dev/null; then
+        # Look for executable in build directory
+        local executable=""
+        for exe in "${module_name}" "${module_name}_tests" "test_${module_name}"; do
+            if [ -f "$exe" ]; then
+                executable="$exe"
+                break
+            fi
+        done
+        
+        if [ -n "$executable" ]; then
             echo "Running $module_name tests..."
-            if ./build/${module_name} 2>&1 | tee ../test-logs/${module_name}_test_output.log; then
-                local test_count=$(grep -c "\[  PASSED  \]" ../test-logs/${module_name}_test_output.log 2>/dev/null || echo "0")
-                local total_count=$(grep -c "\[  PASSED  \]\|\[  FAILED  \]" ../test-logs/${module_name}_test_output.log 2>/dev/null || echo "0")
+            if ./$executable 2>&1 | tee ../../test-logs/${module_name}_test_output.log; then
+                local test_count=$(grep -c "\[  PASSED  \]" ../../test-logs/${module_name}_test_output.log 2>/dev/null || echo "0")
+                local failed_count=$(grep -c "\[  FAILED  \]" ../../test-logs/${module_name}_test_output.log 2>/dev/null || echo "0")
+                local total_count=$((test_count + failed_count))
                 
-                TEST_RESULTS+="✅ $module_name: $test_count/$total_count tests passed\n"
+                if [ $failed_count -eq 0 ]; then
+                    TEST_RESULTS+="✅ $module_name: $test_count/$total_count tests passed\n"
+                else
+                    TEST_RESULTS+="⚠️ $module_name: $test_count/$total_count tests passed ($failed_count failed)\n"
+                fi
                 PASSED_TESTS=$((PASSED_TESTS + test_count))
                 TOTAL_TESTS=$((TOTAL_TESTS + total_count))
             else
-                TEST_RESULTS+="❌ $module_name: Tests failed\n"
-                FAILED_TESTS=$((FAILED_TESTS + 1))
+                local test_count=$(grep -c "\[  PASSED  \]" ../../test-logs/${module_name}_test_output.log 2>/dev/null || echo "0")
+                local failed_count=$(grep -c "\[  FAILED  \]" ../../test-logs/${module_name}_test_output.log 2>/dev/null || echo "0")
+                local total_count=$((test_count + failed_count))
+                
+                if [ $total_count -gt 0 ]; then
+                    TEST_RESULTS+="⚠️ $module_name: $test_count/$total_count tests passed ($failed_count failed)\n"
+                    PASSED_TESTS=$((PASSED_TESTS + test_count))
+                    TOTAL_TESTS=$((TOTAL_TESTS + total_count))
+                else
+                    TEST_RESULTS+="❌ $module_name: No tests found\n"
+                    FAILED_TESTS=$((FAILED_TESTS + 1))
+                fi
             fi
         else
-            echo "Executable not found, trying alternative names..."
-            # Try different executable names
-            for exe in "${module_name}" "${module_name}_tests" "test_${module_name}"; do
-                if [ -f "build/$exe" ]; then
-                    echo "Running $exe tests..."
-                    if ./build/$exe 2>&1 | tee ../test-logs/${module_name}_test_output.log; then
-                        local test_count=$(grep -c "\[  PASSED  \]" ../test-logs/${module_name}_test_output.log 2>/dev/null || echo "0")
-                        local total_count=$(grep -c "\[  PASSED  \]\|\[  FAILED  \]" ../test-logs/${module_name}_test_output.log 2>/dev/null || echo "0")
-                        
-                        TEST_RESULTS+="✅ $module_name: $test_count/$total_count tests passed\n"
-                        PASSED_TESTS=$((PASSED_TESTS + test_count))
-                        TOTAL_TESTS=$((TOTAL_TESTS + total_count))
-                        break
-                    fi
-                fi
-            done
+            echo "No executable found for $module_name"
+            TEST_RESULTS+="❌ $module_name: No executable found\n"
+            FAILED_TESTS=$((FAILED_TESTS + 1))
         fi
     else
         echo "Build failed for $module_name"

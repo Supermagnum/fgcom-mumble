@@ -94,7 +94,7 @@ public class radioGUI {
         
         /* start the main loop */
         udpClient = new UDPclient(state);
-        Object simconnect_client = null;
+        SimConnectBridge simconnect_client = null;
         while (mainWindow.isVisible()) {
             
             /* Boot simConnect if it was requested */
@@ -196,20 +196,18 @@ public class radioGUI {
      * 
      * @return established bridge
      */
-    public static Object invokeSimConnect() {
+    public static SimConnectBridge invokeSimConnect() {
+        // Invoke the simConnect brigde
+        SimConnectBridge fgcom_simconnectbridge = null;
         try {
-            // Try to create the real SimConnectBridge first
-            Class<?> simConnectClass = Class.forName("hbeni.fgcom_mumble.SimConnectBridge");
-            return simConnectClass.getDeclaredConstructor().newInstance();
-        } catch (ClassNotFoundException e) {
-            // SimConnectBridge not available, use stub
-            System.out.println("SimConnect not available, using stub implementation");
-            return new SimConnectBridgeStub();
+            fgcom_simconnectbridge = new SimConnectBridge();
+        } catch (java.net.ConnectException e) {
+            // connection failure. will be handled in the main loop already.
+            // we just return null here.
         } catch (Exception e) {
-            // Other errors, use stub
-            System.err.println("SimConnect error: " + e.getMessage() + ", using stub");
-            return new SimConnectBridgeStub();
+            e.printStackTrace();
         }
+        return fgcom_simconnectbridge;
     }
 
     public static void checkForUpdates() {

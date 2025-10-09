@@ -68,6 +68,16 @@ The addon uses the following standard properties:
   - `/instrumentation/comm[n]/frequencies/selected-channel-width-khz`
   - `/instrumentation/comm[n]/tx-power` (nonstandard and optional; introduced by FGCom-mumble)
 
+### Advanced Radio Configuration (v1.3.2+)
+
+The addon now supports advanced radio configuration with the following new features:
+
+- **Transmitting Power Control**: Configure default TX power in watts (default: 10.0W)
+- **Squelch Control**: Configure default squelch threshold (default: 0.1)
+- **Channel Width Control**: Configure default channel width in kHz (default: 8.33kHz for VHF)
+
+These settings can be configured in the FGCom-mumble settings dialog under "Radio Configuration (Advanced)" and will be applied to all radios by default.
+
 - ADF radios (local only, they can't transmit):
   - `/instrumentation/adf[n]/operable`
   - `/instrumentation/adf[n]/volume-norm`

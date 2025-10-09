@@ -585,6 +585,39 @@ test_radio_propagation_tests_properties.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/radio_propagation_tests_coverage.dir/build.make CMakeFiles/radio_propagation_tests_coverage.dir/test_radio_propagation_tests_properties.cpp.s
 .PHONY : test_radio_propagation_tests_properties.cpp.s
 
+test_real_city_pairs.o: test_real_city_pairs.cpp.o
+.PHONY : test_real_city_pairs.o
+
+# target to build an object file
+test_real_city_pairs.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/radio_propagation_tests.dir/build.make CMakeFiles/radio_propagation_tests.dir/test_real_city_pairs.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/radio_propagation_tests_asan.dir/build.make CMakeFiles/radio_propagation_tests_asan.dir/test_real_city_pairs.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/radio_propagation_tests_tsan.dir/build.make CMakeFiles/radio_propagation_tests_tsan.dir/test_real_city_pairs.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/radio_propagation_tests_coverage.dir/build.make CMakeFiles/radio_propagation_tests_coverage.dir/test_real_city_pairs.cpp.o
+.PHONY : test_real_city_pairs.cpp.o
+
+test_real_city_pairs.i: test_real_city_pairs.cpp.i
+.PHONY : test_real_city_pairs.i
+
+# target to preprocess a source file
+test_real_city_pairs.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/radio_propagation_tests.dir/build.make CMakeFiles/radio_propagation_tests.dir/test_real_city_pairs.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/radio_propagation_tests_asan.dir/build.make CMakeFiles/radio_propagation_tests_asan.dir/test_real_city_pairs.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/radio_propagation_tests_tsan.dir/build.make CMakeFiles/radio_propagation_tests_tsan.dir/test_real_city_pairs.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/radio_propagation_tests_coverage.dir/build.make CMakeFiles/radio_propagation_tests_coverage.dir/test_real_city_pairs.cpp.i
+.PHONY : test_real_city_pairs.cpp.i
+
+test_real_city_pairs.s: test_real_city_pairs.cpp.s
+.PHONY : test_real_city_pairs.s
+
+# target to generate assembly for a file
+test_real_city_pairs.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/radio_propagation_tests.dir/build.make CMakeFiles/radio_propagation_tests.dir/test_real_city_pairs.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/radio_propagation_tests_asan.dir/build.make CMakeFiles/radio_propagation_tests_asan.dir/test_real_city_pairs.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/radio_propagation_tests_tsan.dir/build.make CMakeFiles/radio_propagation_tests_tsan.dir/test_real_city_pairs.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/radio_propagation_tests_coverage.dir/build.make CMakeFiles/radio_propagation_tests_coverage.dir/test_real_city_pairs.cpp.s
+.PHONY : test_real_city_pairs.cpp.s
+
 test_solar_data_impact.o: test_solar_data_impact.cpp.o
 .PHONY : test_solar_data_impact.o
 
@@ -667,6 +700,9 @@ help:
 	@echo "... test_radio_propagation_tests_properties.o"
 	@echo "... test_radio_propagation_tests_properties.i"
 	@echo "... test_radio_propagation_tests_properties.s"
+	@echo "... test_real_city_pairs.o"
+	@echo "... test_real_city_pairs.i"
+	@echo "... test_real_city_pairs.s"
 	@echo "... test_solar_data_impact.o"
 	@echo "... test_solar_data_impact.i"
 	@echo "... test_solar_data_impact.s"

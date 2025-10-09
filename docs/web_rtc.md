@@ -1,25 +1,22 @@
-# WebRTC Browser Client Support (Implemented)
-
-- [WebRTC Implementation Plan](docs/WebRTC_IMPLEMENTATION_PLAN.md) Comprehensive implementation plan for web browser client support
-- [WebRTC Gateway Architecture](docs/WebRTC_GATEWAY_ARCHITECTURE.md) Technical architecture for WebRTC gateway server
-- [WebRTC Protocol Translation](docs/WebRTC_PROTOCOL_TRANSLATION.md) Protocol translation between WebRTC and Mumble
-- [WebRTC Web Interface Design](docs/WebRTC_WEB_INTERFACE_DESIGN.md) Web-based client interface design and mobile optimization
-- [WebRTC Implementation Roadmap](docs/WebRTC_IMPLEMENTATION_ROADMAP.md) 8-month phased implementation roadmap
-- [WebRTC API Tests](test/webrtc_api_tests/README.md) Comprehensive test suite for WebRTC functionality
-- [Vehicle Geometry Creation Guide](docs/VEHICLE_GEOMETRY_CREATION_GUIDE.md) Complete guide for creating vehicle geometry
-- [Amateur Radio Modes](docs/AMATEUR_RADIO_MODES_DOCUMENTATION.md) Complete guide to CW, LSB, USB, NFM, and AM modes
-- [Amateur Radio Terminology](docs/AMATEUR_RADIO_TERMINOLOGY.md) Comprehensive amateur radio terminology and Q-codes reference
-- [Coding Standards](docs/CODING_STANDARDS.md) Strict architectural and design standards
-- [Radio Era Classification](docs/RADIO_ERA_CLASSIFICATION.md) Comprehensive radio technology classification system
-- [BFO/SDR Compatibility](docs/BFO_SDR_COMPATIBILITY_ASSESSMENT.md) Beat Frequency Oscillator and Software Defined Radio compatibility
-- [Threading Architecture](docs/TECHNICAL_DOCUMENTATION.md#threading-architecture) Multi-threaded system documentation
-- [NEC Modeling Guide](docs/TECHNICAL_DOCUMENTATION.md#antenna-patterns) Antenna modeling and calculation guide
-- [VHF/UHF Antenna Specifications](docs/ANTENNA_HEIGHT_SPECIFICATIONS.md) Professional antenna height and performance
-- [New Antennas Summary](docs/2M_YAGI_ANTENNA_SUMMARY.md) Complete overview of all new VHF/UHF antennas
-- [Propagation Physics](docs/TECHNICAL_DOCUMENTATION.md#propagation-physics) Physics-based radio wave propagation modeling
-- [Vehicle Dynamics API](docs/TECHNICAL_DOCUMENTATION.md#vehicle-dynamics) Vehicle tracking and antenna orientation API
-- [Vehicle Dynamics Examples](docs/TECHNICAL_DOCUMENTATION.md#vehicle-dynamics) Practical examples for vehicle dynamics integration
-- [Historical Maritime Bands](docs/HISTORICAL_MARITIME_BANDS.md) Configuration and usage of historical maritime HF frequency bands
-- [Realistic Antenna Examples](docs/2M_YAGI_ANTENNA_SUMMARY.md) Realistic antenna configurations for various vehicle types
-- [Frequency Offset Documentation](docs/FREQUENCY_OFFSET_DOCUMENTATION.md) Audio processing and frequency offset simulation
-- [VHF/UHF Pattern Integration](docs/VHF_UHF_PATTERN_INTEGRATION.md) VHF/UHF antenna pattern integration documentation
+# WebRTC Browser Client Support
+- [WebRTC Gateway Architecture](WebRTC_GATEWAY_ARCHITECTURE.md) Technical architecture for WebRTC gateway server
+- [WebRTC Protocol Translation](WebRTC_PROTOCOL_TRANSLATION.md) Protocol translation between WebRTC and Mumble
+- [WebRTC Web Interface Design](WebRTC_WEB_INTERFACE_DESIGN.md) Web-based client interface design and mobile optimization
+- [WebRTC API Tests](../test/webrtc_api_tests/README.md) Comprehensive test suite for WebRTC functionality
+- [Vehicle Geometry Creation Guide](VEHICLE_GEOMETRY_CREATION_GUIDE.md) Complete guide for creating vehicle geometry
+- [Amateur Radio Modes](AMATEUR_RADIO_MODES_DOCUMENTATION.md) Complete guide to CW, LSB, USB, NFM, and AM modes
+- [Amateur Radio Terminology](AMATEUR_RADIO_TERMINOLOGY.md) Comprehensive amateur radio terminology and Q-codes reference
+- [Coding Standards](CODING_STANDARDS.md) Strict architectural and design standards
+- [Radio Era Classification](RADIO_ERA_CLASSIFICATION.md) Comprehensive radio technology classification system
+- [BFO/SDR Compatibility](BFO_SDR_COMPATIBILITY_ASSESSMENT.md) Beat Frequency Oscillator and Software Defined Radio compatibility
+- [Threading Architecture](TECHNICAL_DOCUMENTATION.md#threading-architecture) Multi-threaded system documentation
+- [NEC Modeling Guide](TECHNICAL_DOCUMENTATION.md#antenna-patterns) Antenna modeling and calculation guide
+- [VHF/UHF Antenna Specifications](ANTENNA_HEIGHT_SPECIFICATIONS.md) Professional antenna height and performance
+- [New Antennas Summary](2M_YAGI_ANTENNA_SUMMARY.md) Complete overview of all new VHF/UHF antennas
+- [Propagation Physics](TECHNICAL_DOCUMENTATION.md#propagation-physics) Physics-based radio wave propagation modeling
+- [Vehicle Dynamics API](TECHNICAL_DOCUMENTATION.md#vehicle-dynamics) Vehicle tracking and antenna orientation API
+- [Vehicle Dynamics Examples](TECHNICAL_DOCUMENTATION.md#vehicle-dynamics) Practical examples for vehicle dynamics integration
+- [Historical Maritime Bands](HISTORICAL_MARITIME_BANDS.md) Configuration and usage of historical maritime HF frequency bands
+- [Realistic Antenna Examples](2M_YAGI_ANTENNA_SUMMARY.md) Realistic antenna configurations for various vehicle types
+- [Frequency Offset Documentation](FREQUENCY_OFFSET_DOCUMENTATION.md) Audio processing and frequency offset simulation
+- [VHF/UHF Pattern Integration](VHF_UHF_PATTERN_INTEGRATION.md) VHF/UHF antenna pattern integration documentation

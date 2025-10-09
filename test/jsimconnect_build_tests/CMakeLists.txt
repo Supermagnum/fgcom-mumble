@@ -95,3 +95,4 @@ if(ENABLE_MULL OR ENABLE_FUZZING)
     target_compile_options(mutation_jsimconnect_build_tests PRIVATE -O2 -g)
     target_link_libraries(mutation_jsimconnect_build_tests ${GTEST_GMOCK_LIBRARIES} Threads::Threads m pthread rapidcheck)
 endif()
+
