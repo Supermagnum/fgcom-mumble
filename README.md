@@ -1,387 +1,276 @@
-
-
-# FGCom-mumble
-## Realistic Radio Communication Simulator for Flight Simulators
+FGCom-mumble - a flightsim radio simulation framework based on mumble
+=====================================================================
 
 <img src="server/statuspage/inc/fgcom_logo.png" width="100px" align="left" />
+This project aims to provide a mumble-based modular radio simulation for flight simulators. The project started mainly as a successor for the asterisk-based FGCom implementation.
 
-A mumble-based modular radio simulation framework that provides realistic radio communication for flight simulators and games with geographic separation, propagation modeling, and authentic radio procedures.
+([-> deutsche Version](README-de_DE.md)) | [![donate](https://img.shields.io/badge/Help_keep_this_running-PaypalMe/BeniH-blue)](https://www.paypal.com/paypalme/BeniH/5)
 
-[![donate](https://img.shields.io/badge/Help_keep_this_running-PaypalMe/BeniH-blue)](https://www.paypal.com/paypalme/BeniH/5) | [Deutsche Version](server/Readme.server-de_DE.md)
+### The main goals are:
+- Provide communication with geographic and channel separation
+- Provide a realistic radio simulation (incl. propagation)
+- Ease of use for the end user / pilot
+- Arbitary frequency support
+- ATIS recording and playback
+- Radio station broadcast support
+- Landline/Intercom support
+- RDF detection for clients
+- Ease of server side installation and operation
+- Standalone nature (no dependency on flightgear)
+- Capability to be integrated into flightgear, with the option to support third party applications (ATC, but also other flightsims)
+- Modularity, so individual components can be easily updated and extended with new features
+- Good and complete documentation
 
----
+Documentation
+=============
+The documentation is split up into relevant parts:
 
-## What This Is
+- Readme.md (*this file*): General overview and client documentation ([deutsche Version](README-de_DE.md))
+- [Readme.architecture.md](Readme.architecture.md) Details about the components that make up the system
+- [client/plugin.spec.md](client/plugin.spec.md) Technical details on plugin design and its input/output data formats
+- [client/radioGUI/Readme.RadioGUI.md](client/radioGUI/Readme.RadioGUI.md) Documentation for the Radio GUI client
+- [client/fgfs-addon/Readme.md](client/fgfs-addon/Readme.md) Documentation for the Flightgear integration addon
+- [server/Readme.server.md](server/Readme.server.md) Details on the server side components and how to run them
+- [server/statuspage/Readme.statuspage.md](server/statuspage/Readme.statuspage.md) Technical details about the status page implementation
 
-**FGCom-mumble** is a sophisticated radio communication simulator that brings realistic radio procedures to flight simulation and games. It's designed for enthusiasts who want authentic radio communication experiences with proper propagation modeling, geographic separation, and realistic audio effects.
+### Bugs/Feature requests/coding help
+The project lives on github: https://github.com/hbeni/fgcom-mumble
 
-### Key Features
-- **Realistic Radio Simulation**: Geographic separation, propagation modeling, and authentic audio effects
-- **Multi-Platform Support**: FlightGear (native), Microsoft Flight Simulator 2020 (experimental), and web browsers
-- **Advanced Features**: ATIS recording, radio station broadcasts, landline/intercom support, and RDF detection
-- **WebRTC Support**: Browser-based access without installation requirements
-- **GPU Acceleration**: CUDA, OpenCL, and Metal support with shared computing capabilities for high-performance propagation
-- **Advanced GPU acceleration with shared computing capabilities:**  Distribute calculations across multiple clients
-- **Real-Time Data Integration**: Solar data, lightning data, and weather data for accurate propagation modeling
-- **Professional Audio Processing**: DSP IIR filters, noise reduction, and spatial audio processing
-- **Antenna Pattern Library**: EZNEC-based 3D radiation patterns for all vehicle types
-- **Physics-Based Propagation**: Atmospheric effects, tropospheric ducting, and terrain obstruction modeling
-- **Feature Toggle System**: 50+ configurable features for custom deployments
-- **API Integration**: RESTful APIs and WebSocket support for game developer integration
-- **Modular Design**: Extensible architecture for custom integrations
+If you want to request a feature or report a bug, you can do so on the issuetracker there. I appreciate help with coding, so feel free to clone the repository and hand in pull-requests!
 
----
 
-##  Security Setup
+Install / Setup for the Client
+==============================
 
-**IMPORTANT: Never store passwords, API keys, or usernames in configuration files!**
+Setup requirements
+----------------------
+- have a standard mumble client with recent plugin support (>= v1.4.0)
+- a recent OpenSSL installation
 
-FGCom-mumble requires secure credential management. All sensitive data must be stored as environment variables.
 
-### Quick Configuration Setup
+Installation
+-----------------------
+The release ZIP contains all binary plugins for all supported operating systems in the `mumble_plugin` bundle.
 
-```bash
-# 1. Run the interactive configuration setup (RECOMMENDED)
-./scripts/setup.sh
+Several installation procedures exist:
 
-# 2. Or run the environment setup only
-./scripts/setup_environment.sh
+### GUI method (recommended)
+After installing Mumble, you can usually install the plugin by just double-clicking the  `.mumble_plugin`-bundle.
 
-# 3. Or manually copy the template
-cp configs/env.template .env
-chmod 600 .env
+Otherwise you can also use Mumbles integrated plugin installer:
+- Start Mumble.
+- In Mumbles *Configure/Settings/Plugins* dialog, hit *Install plugin*.
+- Select the `.mumble_plugin` plugin bundle. Mumble will install the plugin file and report success.
+- browse the plugin list and activate *FGCom-mumble*.
+- You are now ready to go!
 
-# 4. Edit with your credentials
-nano .env
+### Manual install trough terminal
+The installation can also be started by calling mumble from the commandline with the plugin binary release, like: `mumble fgcom-mumble-0.14.1.mumble_plugin`
 
-# 4. Load environment variables
-source .env
-```
+### Manual install by file copying
+- Rename the `.mumble_plugin` bundle to `.zip` and extract it.
+- Choose the appropriate library for your operating system and copy it to mumbles `plugins`-folder.
+  - `fgcom-mumble.so` for Linux (64 bit)
+  - `fgcom-mumble.dll` for Windows (64 bit)
+  - `fgcom-mumble-x86_32.dll` for Windows (32 bit)
+  - `fgcom-mumble-macOS.bundle` for MacOs
+- Mumble will pick it up automatically and show it in the plugins dialog. Activate the plugin.
 
-**The interactive setup script (`./scripts/setup.sh`) will guide you through:**
-- Core application settings (API keys, database)
-- External data sources (NOAA, NASA, weather APIs)
-- GPU acceleration configuration
-- Feature toggles and network settings
-- Monitoring and logging options
 
-### Security Documentation
+Updating
+----------------------
+When Mumble starts, it will check the most recent version of the plugin against the github release page.
+This can be disabled in mumbles settings.
 
-- **[Security Setup Guide](docs/SECURITY_SETUP.md)** - Complete guide for setting up environment variables
-- **[Security Best Practices](docs/SECURITY_BEST_PRACTICES.md)** - Production security guidelines
-- **[Environment Template](configs/env.template)** - Template for all required environment variables
+When a more recent version is found, Mumble will ask you if you want to upgrade. When you allow it, Mumble downloads and replaces the plugin library automatically for you.  
+You can also download and upgrade manually by the normal installation procedure described above.
 
-### Required Environment Variables
 
-- `FGCOM_API_KEY` - Main application API key
-- `NOAA_SWPC_API_KEY` - NOAA Space Weather API
-- `NASA_API_KEY` - NASA API access
-- `OPENWEATHERMAP_API_KEY` - Weather data API
-- Database credentials (if using external database)
+Plugin configuration
+-----------------------
+Usually the default values are fine. Some features however can be configured differently, like disabling radio audio effects (white noise etc), changing the plugins UDP listen port or the name match of the special `fgcom-mumble` channel.
 
----
+You can do this by copying the [`fgcom-mumble.ini`](client/mumble-plugin/fgcom-mumble.ini) example file to your users home folder and adjusting as needed. The file is loaded once at plugin initialization from the following locations (in order):
 
-## Beta Testers Wanted!
+- Linux:
+  - `/etc/mumble/fgcom-mumble.ini`
+  - `<home>/.fgcom-mumble.ini`
+  - `<home>/fgcom-mumble.ini`
+- Windows:
+  - `<home>\fgcom-mumble.ini`
+  - `<home>\Documents\fgcom-mumble.ini`
 
-**FGCom-mumble is actively seeking beta testers to help improve the system!**
 
-We need experienced users to test new features, provide feedback, and help identify issues before public release. Beta testing is particularly valuable for:
 
-- **GPU Acceleration Features**: Test CUDA, OpenCL, and Metal GPU acceleration
-- **Advanced Configuration Options**: Validate multiple configuration settings across 17 categories
-- **Multi-Platform Integration**: Test FlightGear, MSFS 2020, and WebRTC compatibility
-- **Performance Optimization**: Help optimize GPU resource management and thermal control
-- **New API Endpoints**: Test RESTful API and WebSocket interfaces
-- **Security Features**: Validate authentication and authorization systems
+Running the client
+======================
+- connect your mumble client to fgfs mumble server
+- enable your plugin in your standard mumble client
+- join a channel starting with `fgcom-mumble` 
 
-### How to Participate
+You are ready for radio usage! Some client needs to supply information to the plugin now, so it knows about your location and radio stack.
 
-1. **Join the Beta Program**: Contact the development team through GitHub Issues
-2. **Report Issues**: Use the issue tracker to report bugs and suggest improvements
-3. **Provide Feedback**: Share your experience with different configurations and use cases
-4. **Test New Features**: Help validate new functionality before public release
 
-### Beta Tester Requirements
+### Generic compatibility
+The plugin aims to be compatible to the legacy fgcom-standalone protocol, so vey much all halfway recent fgfs instances, ATC clients and aircraft should handle it out of the box at least with COM1.
 
-- **Technical Expertise**: Server administration and configuration experience
-- **Testing Environment**: Dedicated test system for beta features
-- **Feedback Commitment**: Regular feedback and issue reporting
-- **Documentation**: Help improve documentation and user guides
-- **Preferred optional skills**: C++/C experience and log reading ability
-
-**Interested?** Open an issue on GitHub with "Beta Tester Application" in the title and describe your technical background and testing environment.
-
----
-
-## Important: Technical Requirements
-
-**FGCom-mumble is NOT a simple "plug and play" system.** It requires technical expertise:
-
-### Prerequisites
-- **Server Administration**: Linux/Windows server management experience
-- **Technical Configuration**: Multiple configuration options across 17 categories  
-- **Network Setup**: UDP port configuration, firewall rules, channel management
-- **Radio Knowledge**: Understanding of radio frequencies and propagation
-- **Installation Time**: 2-4 hours for basic setup, 1-2 days for advanced configuration
-
-### Supported Platforms
-- **FlightGear**: Native integration (requires technical knowledge)
-- **Microsoft Flight Simulator 2020**: Via RadioGUI with SimConnect (requires technical setup)
-- **Web Browsers**: WebRTC gateway (no installation required)
-
-#### MSFS 2020 SimConnect Limitations
-
-**Microsoft Flight Simulator 2020 integration has significant limitations:**
-
-- **Windows-Only**: SimConnect is Windows-exclusive, no Linux/macOS support
-- **Complex Integration**: SimConnect API is poorly documented and requires deep MSFS internals knowledge
-- **Edge Cases**: Many quirks and undocumented behaviors in the SimConnect interface
-- **Build Issues**: JSIMConnect library has incomplete implementation (46+ compilation errors)
-- **Maintenance Burden**: Requires constant updates for MSFS version changes
-
-**Current Status**: MSFS 2020 integration is **experimental** and may not work reliably. The RadioGUI can be built without SimConnect support for basic functionality.
-
-**Recommendation**: For reliable operation, use FlightGear (native) or WebRTC (browser) platforms instead of MSFS 2020.
-- **Other Games**: Manual integration through API's.
-
----
-
-## Getting Started
-
-### For Pilots and Users
-| Guide | Purpose |
-|-------|---------|
-| **[Installation Guide](docs/INSTALLATION.md)** | Complete setup and installation instructions |
-| **[Client Usage Guide](docs/CLIENT_USAGE_GUIDE.md)** | How to use FGCom-mumble with your flight simulator |
-| **[WebRTC Gateway](webrtc-gateway/README.md)** | Browser-based access (no installation required) |
-| **[Special Frequencies Guide](docs/SPECIAL_FREQUENCIES_GUIDE.md)** | ATIS, test frequencies, and special features |
-| **[Troubleshooting Guide](docs/TROUBLESHOOTING_GUIDE.md)** | Common issues and solutions |
-
-### For Administrators
-| Guide | Purpose |
-|-------|---------|
-| **[Technical Setup Guide](docs/TECHNICAL_SETUP_GUIDE.md)** | Server setup and configuration |
-| **[Bot Management Guide](docs/BOT_MANAGEMENT_GUIDE.md)** | Bot configuration and management |
-| **[Security Documentation](docs/SECURITY_API_DOCUMENTATION.md)** | Security implementation and best practices |
-| **[Server Documentation](server/Readme.server.md)** | Server-side components and operation |
-
-### For Developers
-| Guide | Purpose |
-|-------|---------|
-| **[Compilation Guide](docs/COMPILATION_GUIDE.md)** | Build from source code |
-| **[Game Developer Integration Guide](docs/GAME_DEVELOPER_INTEGRATION_GUIDE.md)** | Integrate with your game or simulator |
-| **[API Documentation](docs/API_REFERENCE_COMPLETE.md)** | RESTful API and WebSocket interfaces |
-| **[Technical Documentation](docs/TECHNICAL_DOCUMENTATION.md)** | Deep technical details |
-
----
-
-## Quick Configuration
-
-### Basic Setup
-```bash
-# Copy the example configuration
-cp configs/fgcom-mumble.ini ~/.fgcom-mumble.ini
-nano ~/.fgcom-mumble.ini
-```
-
-### Essential Settings
-
-| Setting | Default | Description |
-|---------|---------|-------------|
-| `radioAudioEffects` | `1` | Enable realistic radio static, noise, and propagation effects |
-| `allowHearingNonPluginUsers` | `0` | Allow WebRTC browser clients to be heard by plugin users |
-| `udpServerHost` | `127.0.0.1` | UDP server listening interface (`*` for all interfaces) |
-| `udpServerPort` | `16661` | UDP server port for client communication |
+Note that frequencies can be arbitary strings. That said, all participating clients must share a common definition of "frequency", this should be the physical radio wave frequency in MHz and not the "channel" (esp. with 8.3 channels spacing).  
+Also note that callsigns and frequencies are not allowed to contain the comma symbol (`,`). Decimal point symbol has always to be a point (`.`).
 
-### Configuration Examples
+Despite we expect the connected simulator to provide PTT-information in order to activate radio transmissions, you may also use the configfile to define mappings for mumble's internal voice activation. This way, you can use mumbles own PTT-binding to activate the radios you mapped. By default, the first Radio is already mapped for your convinience.
 
-**For Pilots:**
-```ini
-radioAudioEffects=1
-allowHearingNonPluginUsers=0
-udpServerHost=127.0.0.1
-```
 
-**For ATC Controllers:**
-```ini
-radioAudioEffects=1
-allowHearingNonPluginUsers=1
-autoJoinChannel=1
-```
+### RadioGUI
+FGCom-mumble releases ship with a cross-plattform java application that implements most of the UDP protocol and thus can be used not only for testing purposes, but also real operations without the need for another client.  
+Core features are supported by any radioGUI version but use the latest to be sure to get all features (if in doubt, read the release notes).
 
-**For WebRTC Gateway:**
-```ini
-radioAudioEffects=1
-allowHearingNonPluginUsers=1
-udpServerHost=*
-```
+#### SimConnect (MSFS-2020) support
+RadioGUI can act as a SimConnect bridge to support MSFS2020 and other SimConnect compatible simulators (P3d, FSX, etc).
+For details on how this can be done, look at RadioGUI's readme.
 
----
 
-## Complete Documentation
+### Flightgear specific
+Just add and activate the [FGFS-addon](client/fgfs-addon/Readme.md) in your launcher (you can use FGCom-Mumble and the old FGCom in parallel).
 
-### Core Documentation
-- **[How This Works for Dummies](docs/HOW_THIS_WORKS_FOR_DUMMIES.md)** - Simple explanation of radio propagation with practical examples
-- **[Radio Propagation Mathematics](docs/RADIO_PROPAGATION_MATHEMATICS.md)** - Mathematical models and calculations
-- **[Technical User Guide](docs/TECHNICAL_USER_GUIDE.md)** - Technical overview and capabilities
+The FGFS protocol file will handle old 25kHz as well as newer 8.3kHz radios.
+After starting flightgear, you can use your radio stack like with FGCom (default is *space* to talk on COM1, *shift+space* for COM2, *alt+space* for COM3 and *ctrl+space* for intercom). Additional radios can be accessed by adding custom keybinds, or by using the _Combar_.  
+The addon can be configured via a new entry in the *Multiplayer* menu.
 
-### Advanced Features
-- **[Advanced Features](docs/advanced_features.md)** - Comprehensive overview of all advanced features
-- **[WebRTC Browser Client Support](docs/web_rtc.md)** - WebRTC implementation documentation
-- **[Antenna Pattern Creation](docs/antenna_patterns.md)** - Antenna pattern creation guides
-
-### Game Integration
-- **[Game Developer Integration Guide](docs/GAME_DEVELOPER_INTEGRATION_GUIDE.md)** - Integration requirements and protocols
-- **[Terrain and Environmental Data API](docs/TERRAIN_ENVIRONMENTAL_DATA_API.md)** - Critical terrain and environmental data requirements
-- **[Game Terrain Integration Guide](docs/GAME_TERRAIN_INTEGRATION_GUIDE.md)** - Terrain integration instructions
+Your ADF will recognize transmissions in the kHz range. With enabled _ADF_-mode the indicated bearing is recognized and visible on the instrument. The plane's audio system may also playback the received analog audio signal. This is usually switched at your plane's audio panel.
 
-### Frequency Documentation
-- **[Aviation VHF Civil](docs/aviation-VHF-civil.md)** - Civil aviation VHF frequency bands
-- **[Military VHF/UHF](docs/military-vhf-uhf.md)** - Military VHF/UHF frequency bands
-- **[Civil HF Frequencies](docs/CIVIL_HF_freqs.md)** - Civil HF frequency allocations
-- **[Known Military Bands](docs/KNOWN_MILITARY_BANDS_AND_FREQS.md)** - Military frequency bands and protocols
-- **[Band Segments Reference](docs/BAND_SEGMENTS_REFERENCE.md)** - Frequency allocations and regulatory compliance
 
-### Development Resources
-- **[Good Coding Practices](docs/GOOD_CODING_PRACTICES.md)** - Strict coding standards and quality requirements
+### ATC-Pie specific
+Since ATC-Pie v1.7.1 FGCom-mumble is supported out of the box.
+Be sure to activate the fgcom-mumble option however, as the standard fgcom support does only work with COM1.
 
----
 
-## Technical Components
+### OpenRadar specific
+Currently, OpenRadar just supports one Radio per UDP port. In case you want several Radios (which is likely), you need to invoke several dedicated mumble processes. This will give you separate FGCom-mumble plugin instances listening on different ports, and in OpenRadar you can thus specify that ports.
 
-### Client Components
-- **[Mumble Plugin](client/mumble-plugin/plugin.spec.md)** - Technical details on plugin design and data formats
-- **[RadioGUI](client/radioGUI/Readme.RadioGUI.md)** - Radio GUI client documentation
-- **[FlightGear Addon](client/fgfs-addon/Readme.md)** - FlightGear integration addon
+For better FGCom-mumble support, [patches are already pending](https://sourceforge.net/p/openradar/tickets/) and there is a [binary package available](http://fgcom.hallinger.org/OpenRadar_fgcom-mumble.jar).  
+With that patches, you can select FGCom-mumble and then kindly add the same port for each radio (like "`16661,16661`" to get two radios connected to your single plugin instance).
 
-### Server Components
-- **[Server Documentation](server/Readme.server.md)** - Server-side components and operation
-- **[Status Page](server/statuspage/Readme.statuspage.md)** - Status page implementation details
 
-### Advanced APIs
-- **[Work Unit Distribution API](docs/WORK_UNIT_DISTRIBUTION_API.md)** - Distributed computing and work unit management
-- **[Security API Documentation](docs/SECURITY_API_DOCUMENTATION.md)** - Comprehensive security implementation
+Support for FGCom special frequencies
+-------------------------------------
+A common thing is that pilots may want to easily test if their setup works. This is implemented trough some special bots as well as the plugin itself. Also, FGCom-mumble has builtin special frequencies with alternative behaviour.
 
+Please note there is no global-chat frequency. If you want to globally chat, switch to normal mumble channels or use the landline feature (tune a `PHONE` frequency, see below).
 
----
+### ATIS
 
-## Installation
+ATIS Recording and -playback is provided by a set of specialized server side bots. Look for the recorder bot in mumbles channel list to see if the server supports ATIS recordings.
 
-### Automated Installation
-```bash
-# Clone the repository
-git clone https://github.com/Supermagnum/fgcom-mumble.git
-cd fgcom-mumble
+Recording
+---------
+To record an ATIS sample, you need to:
 
-# Run the automated installation script
-sudo ./scripts/install_fgcom_mumble.sh
-```
+- Setup your Callsign to the target one. The replay-bot will use that callsign to identify itself
+- Setup your location on earth; pay attention to a proper height as this will mainly determine the range of the signal
+- Tune a COM device to frequency `RECORD_<tgtFrq>`
+- Start talking on the COM device by pressing its PTT
+- When done, release PTT and retune to a normal frequency.
 
-### Service Management
-```bash
-# Check system status
-sudo ./scripts/status_fgcom_mumble.sh
+Regular recordings have a serverside limit of 120 seconds by default.
 
-# Uninstall (if needed)
-sudo ./scripts/uninstall_fgcom_mumble.sh
-```
+Note: Chances are good that your ATC client does all this for you and you just need to push some "Record ATIS" button.  
+The RadioGUI has a tuning template for that. It may be a good idea to start a separate instance of the RadioGUI for recording in order to be able to leave the original client data untouched.
 
+Playback
+---------
+If a `botmanager` is running at the server, the recorderbot will notify it to start a matching replay-bot. the recording user is by default authenticated to the playback bot and can thus manage it using chat commands (try saying `/help` to him to get started).
 
 
-**Build Commands:**
-```bash
-# Build all components
-make all
+### Landlines/Intercom
+Landlines/Intercom connections are a feature meant to be used by ATC instances. They are not subject to radio limits like range or signal quality. They operate worldwide and in full duplex.  
+Landline channel names starts with `PHONE` and intercom with `IC:`. The difference between the two is audio characteristics.
 
-# Build without MSFS 2020 support (recommended)
-make build-radioGUI-without-jsimconnect
+To talk on an intercom/landline connection:
 
-# Build with MSFS 2020 support (experimental)
-make build-radioGUI
-```
+- Tune a COM device to frequency `PHONE:[ICAO]:[POS](:[LINE])`, like `PHONE:EDDM:TWR:1` or `PHONE:EDMO:GND`.
+- Use your PTT as usual
 
-### GPU Acceleration & Shared Computing
+Note: Chances are good that your ATC client does set this up for you and provides some "Talk on Intercom" button.
 
-**Advanced GPU acceleration with shared computing capabilities:**
 
-- **Multi-GPU Support**: Distribute calculations across multiple graphics cards
-- **Network GPU Sharing**: Use GPUs from multiple computers in your network
-- **Cloud GPU Integration**: Combine local and cloud GPU resources
-- **Automatic Load Balancing**: Distribute work optimally across available GPUs
-- **Cross-Platform**: CUDA (NVIDIA), OpenCL (AMD/Intel), Metal (Apple)
+### Test frequencies
+Test frequencies are provided by a specialized server side bot. Look for the bot in mumbles channel list to see if the server supports test frequencies:
 
-**Performance Benefits:**
-- **10-100x faster** than CPU-only calculations
-- **Handles 500+ pilots** simultaneously
-- **Real-time weather** effects with no lag
-- **Scalable performance** as you add more GPUs
+  - 910.000 MHz: echo test frequency. Your voice will be echoed back after you release PTT, to allow you to check that your microphone, speakers/headset and that your connection to the FGCom server works and to let you know how you are heared from others. Test recordings are limited to 10 seconds by default.
+  - NOT-IMPLEMENTED-YET: 911.000 MHz: The frequency continuously plays a test sample, allowing you to check that your connection to the FGCom server works.
 
-**Configuration Examples:**
-```bash
-# Multi-GPU setup
-shared_gpu = true
-gpu_count = 4
-gpu_distribution = "workload"
 
-# Network GPU sharing
-network_gpu_sharing = true
-server_gpu_pool = ["192.168.1.10:gpu1", "192.168.1.11:gpu2"]
-```
+### Obsolete legacy FGCom frequencies
+The following traditional FGCom frequencies are not special anymore; these are now implemented trough "default" comms (they were special before because of asterisk implementation details):
 
----
+- 121.000 MHz, 121.500 MHz: "guard" frequencies reserved for emergency communications;
+- 123.450 MHz, 123.500 MHz, 122.750 MHz: general chat frequencies (they are obsolete anyway since 8.33 channels where introduced 20.12.2019! -> new is 122.540, 122.555, 130.430 MHz);
+- 700.000 MHz: radio station frequency. Depending on the FGCom server in use, a recorded radio message will be played;
+- 723.340 MHz: French Air Patrol communication frequency.
 
-## Antenna Pattern Visualization
 
-The system includes comprehensive antenna pattern visualization showing realistic radiation patterns for various vehicle types. The purple lines represent a basic, crude representation of a JEEP vehicle (sides and wheels not shown for clarity). The "8" figure demonstrates how a typical antenna tied down at a 45° angle radiates, providing realistic propagation modeling for ground-based vehicles.
+### Special FGCom-mumble frequencies
+- `<del>`: Providing this frequency will deregister the radio. A Radio on this frequency is never operable and thus never sends or receives transmissions.
 
-![Gain Pattern Visualization](https://raw.githubusercontent.com/Supermagnum/fgcom-mumble/refs/heads/master/assets/screenshots/gain%20pattern.png)
 
-### Included Antenna Patterns
+Troubleshooting
+------------------------
+When you cannot hear other pilots or are unable to transmit on the radios, you can check the following:
 
-**Note: Not all patterns are included to conserve repository space. Some patterns must be generated by users.**
+- Make sure, your mumble is operational otherwise (so you can talk with others)
+- Check mumbles client comment if the callsign and radio frequencies are registered
+- Check the status webpage if it shows your entry (shows the data others receive from you)
+- To send, you need to activate the PTT of the radio (pressing mumbles native PTT-key is just mapped to COM1 by default).
+- Try to check against the FGCOM-Echo bot (tune 910.00 and transmit something; but needs the bot manager alive on the server)
+- Check that you are not transmitting when you expect incoming messages (Radios are halfduplex -> look at your mumble symbol)
+- Recheck the tuned frequencies and volume of radio and, if present, audio panel
+- Make sure the radio is operable (powered, switched on, serviceable)
+- Check that you really are in range (low altitude severely limits your available range!)
+- Try to leave and rejoin the channel, so the plugin reinitializes; or restart mumble.
+- Check that your software (ATC, flightsim) actually sends data to the plugin udp port. Recheck the port the plugin listens to (the plugin tells you at startup in the mumble chat window)
+- Look at the plugins debug messages (start mumble from terminal; you need to make a debug build for that)
+- Look at the murmur server log for possible dropped plugin messages (look for the string `Dropping plugin message`), they may cause out of sync state. Reasons can be:
+  - the setting *`pluginmessagelimit`* in `murmur.ini` may be too restrictive.
+  - a bug in the plugin-io code: The plugin is expected to work well with default settings, so dropped messages may indicate a plugin bug; especially if they appear rapidly over a longer time.
 
-#### Ground-based Antennas (155 patterns)
-- **Yagi Antennas**: 116 patterns covering HF (7-28MHz), VHF (50-144MHz), and UHF (432MHz) bands
-- **Vertical Antennas**: 22 patterns for VHF/UHF fixed installations
-- **Loop Antennas**: 10 patterns for HF (80m) operations
-- **Coastal Stations**: 7 patterns for HF maritime communications
 
-#### Military Land Vehicles (596 patterns)
-- **Soviet UAZ**: 588 patterns with attitude variations
-- **Leopard 1 MBT**: 3 patterns
-- **T-55 Soviet MBT**: 3 patterns  
-- **NATO Jeep**: 2 patterns
+Compiling the plugin
+======================
+The FGCom-mumble client plugin needs to be in binary form. If you want to use the latest code from github, you can compile yourself. The makefile is tailored to be used mainly on linux, but can be used in windows and macOS too.  
 
-#### Civilian Vehicles (4 patterns)
-- **Ford Transit**: 2 patterns
-- **VW Passat**: 2 patterns
+- Prerequisites:
+  - `git`, `make`, `g++`, `mingw32` (for windows build)
+  - OpenSSL: Linux builds dynamically against the installed `libssl-dev`. MingW/Windows links statically against a build from the git submodule `lib/openssl` by invoking `make openssl-win`.
 
-#### Patterns Not Included (Must be Generated)
-- **Aircraft Patterns**: Not included due to storage constraints - must be generated using the pattern generation script
-- **Marine Patterns**: Not available - cannot be generated due to safety limits (exceeds 50,000+ combination limit)
-- **Ground Type Variations**: Ideally, patterns should be generated for each ground type (conductivity, permittivity), but this would create an extremely large database
+- Building:
+  - Download the source tree: `git clone https://github.com/hbeni/fgcom-mumble.git`
+  - Go into the source project folder: `cd fgcom-mumble`
+  - on linux type `make plugin` to build the binary mumble plugin library
+  - or `make plugin-win64` to cross-compile to windows
 
-**Generation**: Use `scripts/pattern_generation/antenna-radiation-pattern-generator.sh` to generate missing aircraft patterns. See [Antenna Pattern Creation Documentation](docs/antenna_patterns.md) for complete details.
+Other interesting compile targets:
 
-**Note on Ground Types**: While ideal antenna patterns would account for different ground types (soil conductivity, moisture, urban vs rural environments), the database would become prohibitively large. Current patterns use standard ground assumptions for practical implementation.
+  - `make` is an alias for `make release`
+  - `make release` creates release ZIP files
+  - `make debug` will build the plugin and add debug code that will print lots of stuff to the terminal window when running the plugin
+  - `make test` builds and runs catch2-unittests
+  - `make tools` builds some utilitys and test tools
 
----
 
-## Contributing
+Windows native build
+--------------------
+The makefile works well on Windows with cygwin64 with mingw32.  
+You just need to use `x86_64-w64-mingw32-g++` instead of `x86_64-w64-mingw32-g++-posix`:
 
-The project lives on GitHub: https://github.com/Supermagnum/fgcom-mumble
+- 64bit: `make CC=x86_64-w64-mingw32-g++ plugin-win64`
+- 32bit: `make CC=i686-w64-mingw32-g++ plugin-win32`
 
-- **Issues**: Report bugs or request features on the issue tracker
-- **Pull Requests**: Contributions are welcome! Clone the repository and submit pull requests
 
+MacOS native build
+------------------
+There is an makefile alias `make plugin-macOS` that will do the following:
 
+- You need to explicitely use the _g++-11_ compiler, as the default _g++_ is linked to _clang_. Also you need to adjust the path to the openssl distribution:  
+`make -C client/mumble-plugin/ outname=fgcom-mumble-macOS.bundle CC=g++-11 CFLAGS="-I/usr/local/opt/openssl/include/ -L/usr/local/opt/openssl/lib/" plugin`
 
-
----
-
-## Testing and Quality
-
-- **[Testing Guide](docs/TESTING_GUIDE.md)** - Simple explanation of what all tests do (non-programmer friendly)
-- **[Test Results](test/tests-passed.md)** - Test suite execution results and coverage analysis
-
-s 
+- After compilation, rename the plugin binary to `fgcom-mumble-macOS.bundle` to stay compatible with the official releases.
