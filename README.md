@@ -359,6 +359,7 @@ The project lives on GitHub: https://github.com/Supermagnum/fgcom-mumble
 
 - **[Testing Guide](docs/TESTING_GUIDE.md)** - Simple explanation of what all tests do (non-programmer friendly)
 - **[Test Results](test/tests-passed.md)** - Test suite execution results and coverage analysis
+- **[Fuzzing Campaign Results](logs/all_stats.txt)** - 12-hour AFL++ fuzzing campaign: 397M executions, 0 crashes, 100% success rate
 
 ### Test Locations
 - **[AGC/Squelch Tests](test/agc_squelch_tests/)**
