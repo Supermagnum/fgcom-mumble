@@ -361,34 +361,30 @@ The project lives on GitHub: https://github.com/Supermagnum/fgcom-mumble
 - **[Test Results](test/tests-passed.md)** - Test suite execution results and coverage analysis
 
 ### Test Locations
-
-#### Unit and Integration Tests
-- **[Radio Propagation Tests](test/radio_propagation_tests/)** - Mathematical model validation and propagation calculations
-- **[Audio Processing Tests](test/audio_processing_tests/)** - DSP algorithms, noise reduction, and audio quality validation
-- **[Antenna Pattern Tests](test/antenna_pattern_module_tests/)** - 3D radiation pattern accuracy and antenna modeling
-- **[Frequency Management Tests](test/frequency_management_tests/)** - Frequency allocation, interference detection, and band management
-- **[AGC/Squelch Tests](test/agc_squelch_tests/)** - Automatic gain control and squelch threshold validation
-- **[Network Protocol Tests](test/network_module_tests/)** - UDP communication, message parsing, and protocol compliance
-- **[Geographic Tests](test/geographic_module_tests/)** - Coordinate calculations, distance measurements, and terrain analysis
-- **[ATIS Processing Tests](test/atis_module_tests/)** - Airport information service and automated announcements
-- **[Database Tests](test/database_configuration_module_tests/)** - Data persistence, configuration management, and query optimization
-- **[Security Tests](test/security_module_tests/)** - Authentication, authorization, and input validation
-- **[Status Page Tests](test/status_page_module_tests/)** - Web interface, real-time updates, and monitoring
-- **[WebRTC Tests](test/webrtc_api_tests/)** - Browser compatibility, audio streaming, and cross-platform support
-- **[Integration Tests](test/integration_tests/)** - End-to-end system validation and component interaction
-- **[Performance Tests](test/performance_tests/)** - Load testing, memory usage, and optimization validation
-- **[Error Handling Tests](test/error_handling_tests/)** - Exception handling, recovery mechanisms, and graceful degradation
-
-#### Advanced Testing
-- **[Fuzzing Campaign](scripts/fuzzing/)** - 6-hour AFL++ fuzzing campaign across 15 targets (120 core-hours)
-- **[Property-Based Testing](test/rapidcheck_tests/)** - RapidCheck property-based testing for mathematical correctness
-- **[Edge Case Coverage](test/edge_case_coverage_tests/)** - Boundary condition testing and extreme scenario validation
-- **[Diagnostic Examples](test/diagnostic_examples/)** - Troubleshooting scenarios and diagnostic procedures
-
-#### Test Execution
-- **[Run All Tests](test/run_all_tests.sh)** - Execute complete test suite
-- **[Fuzzing Scripts](scripts/fuzzing/run_fuzzing.sh)** - Comprehensive fuzzing execution
-- **[Test Results](test/test_results/)** - Detailed test execution reports and coverage analysis
+- **[AGC/Squelch Tests](test/agc_squelch_tests/)**
+- **[Antenna Pattern Tests](test/antenna_pattern_module_tests/)**
+- **[ATIS Module Tests](test/atis_module_tests/)**
+- **[Audio Processing Tests](test/audio_processing_tests/)**
+- **[Client Plugin Tests](test/client_plugin_module_tests/)**
+- **[Database Configuration Tests](test/database_configuration_module_tests/)**
+- **[Diagnostic Examples](test/diagnostic_examples/)**
+- **[Edge Case Coverage](test/edge_case_coverage_tests/)**
+- **[Error Handling Tests](test/error_handling_tests/)**
+- **[Frequency Interference Tests](test/frequency_interference_tests/)**
+- **[Frequency Management Tests](test/frequency_management_tests/)**
+- **[Fuzzing Strategy](test/fuzzing_strategy/)**
+- **[Geographic Module Tests](test/geographic_module_tests/)**
+- **[Integration Tests](test/integration_tests/)**
+- **[Network Module Tests](test/network_module_tests/)**
+- **[OpenStreetMap Tests](test/openstreetmap_infrastructure_tests/)**
+- **[Performance Tests](test/performance_tests/)**
+- **[Professional Audio Tests](test/professional_audio_tests/)**
+- **[Radio Propagation Tests](test/radio_propagation_tests/)**
+- **[RapidCheck Tests](test/rapidcheck_tests/)**
+- **[Security Module Tests](test/security_module_tests/)**
+- **[Status Page Tests](test/status_page_module_tests/)**
+- **[WebRTC API Tests](test/webrtc_api_tests/)**
+- **[Work Unit Distribution Tests](test/work_unit_distribution_module_tests/)**
 
 
 This code was built with AI assistance. 
