@@ -265,6 +265,7 @@ The FGCom-Mumble test suite demonstrates robust functionality across ALL modules
 **Overall Assessment:** **PERFECT** - All functionality fully verified with complete build success, new real-world testing capabilities, and resolved network timeout issues
 
 ## Fuzzing Campaign & Security Fixes
+( note, outdated.Please Check the 12 hour run linked in the main readme )
 
 **Fuzzing Date:** October 9, 2025  
 **Duration:** 6 hours (120 core-hours across 15 targets)  
