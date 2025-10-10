@@ -59,7 +59,7 @@ Testing is like checking that a car works properly before you drive it. We test 
 **How it works**: 
 - Sends thousands of random inputs to find edge cases
 - Tests 15 different parts of the system simultaneously
-- Runs for 6 hours to find rare problems
+- Runs for many hours to find rare problems
 - Discovers buffer overflows and memory corruption issues
 
 ## How We Test
@@ -85,7 +85,6 @@ Testing is like checking that a car works properly before you drive it. We test 
 - **Why**: Finds security vulnerabilities that could be exploited by attackers
 - **How**: 
   - Tests 15 different system components simultaneously
-  - Uses 20 CPU cores for 6 hours (120 core-hours total)
   - Sends millions of random, malformed inputs
   - Discovers buffer overflows, memory corruption, and crash conditions
   - Generates detailed security reports
@@ -104,13 +103,6 @@ Testing is like checking that a car works properly before you drive it. We test 
 - **13 different test categories** covering all aspects
 - **Real-time monitoring** of system health
 
-### **Fuzzing Campaign Results**
-- **6 critical security vulnerabilities** discovered and fixed
-- **15 fuzzing targets** tested across all system components
-- **33-40% code coverage** achieved per target
-- **Buffer overflow vulnerabilities** identified and patched
-- **All crash-triggering inputs** now process safely
-- **Production-ready fuzzing system** implemented
 
 ## What This Means for Users
 
@@ -166,7 +158,5 @@ We test everything to make sure the radio communication system works perfectly. 
 - **Advanced security testing with fuzzing**
 
 All tests are designed to ensure pilots, air traffic controllers, and gamers have reliable, clear communications in flight simulators and games, just like in real aviation and military operations.
-
-**Security Focus**: Our fuzzing campaign discovered and fixed 6 critical security vulnerabilities, ensuring the system is secure against malicious attacks and malformed data.
 
 **Bottom Line**: We test everything so you don't have to worry about the system not working when you need it most, and we use advanced security testing to protect against potential attacks.
