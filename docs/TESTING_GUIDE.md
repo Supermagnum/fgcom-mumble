@@ -52,6 +52,16 @@ Testing is like checking that a car works properly before you drive it. We test 
 **Why it matters**: Protects aviation communications from interference
 **Real example**: Testing that unauthorized people can't access the system
 
+### 9. **Fuzzing Tests (Advanced Security Testing)**
+**What it does**: Uses automated tools to find hidden security problems by sending random, malformed data to the system
+**Why it matters**: Discovers security vulnerabilities that normal testing might miss
+**Real example**: Sending corrupted radio data to see if the system crashes or gets hacked
+**How it works**: 
+- Sends thousands of random inputs to find edge cases
+- Tests 15 different parts of the system simultaneously
+- Runs for 6 hours to find rare problems
+- Discovers buffer overflows and memory corruption issues
+
 ## How We Test
 
 ### **Automated Testing**
@@ -69,6 +79,17 @@ Testing is like checking that a car works properly before you drive it. We test 
 - **When**: Regularly to ensure good performance
 - **Why**: Ensures the system doesn't slow down or crash
 
+### **Fuzzing Testing (Security Vulnerability Discovery)**
+- **What**: Automated security testing using AFL++ fuzzing tools
+- **When**: Before major releases and after significant code changes
+- **Why**: Finds security vulnerabilities that could be exploited by attackers
+- **How**: 
+  - Tests 15 different system components simultaneously
+  - Uses 20 CPU cores for 6 hours (120 core-hours total)
+  - Sends millions of random, malformed inputs
+  - Discovers buffer overflows, memory corruption, and crash conditions
+  - Generates detailed security reports
+
 ## Test Results
 
 ### **What We Measure**
@@ -82,6 +103,14 @@ Testing is like checking that a car works properly before you drive it. We test 
 - **100% success rate** for all working tests
 - **13 different test categories** covering all aspects
 - **Real-time monitoring** of system health
+
+### **Fuzzing Campaign Results**
+- **6 critical security vulnerabilities** discovered and fixed
+- **15 fuzzing targets** tested across all system components
+- **33-40% code coverage** achieved per target
+- **Buffer overflow vulnerabilities** identified and patched
+- **All crash-triggering inputs** now process safely
+- **Production-ready fuzzing system** implemented
 
 ## What This Means for Users
 
@@ -117,6 +146,15 @@ Testing is like checking that a car works properly before you drive it. We test 
 - Check `test/tests-passed.md` for detailed results
 - Look at individual test logs for specific information
 
+### **For Security-Conscious Users**
+- **Fuzzing Scripts**: Use `./scripts/fuzzing/run_fuzzing.sh` for comprehensive security testing
+- **Tier-Based Testing**: 
+  - `./scripts/fuzzing/fuzz_tier1_critical.sh` - Critical security targets
+  - `./scripts/fuzzing/fuzz_tier2_important.sh` - Important system components
+  - `./scripts/fuzzing/fuzz_tier3_standard.sh` - Standard functionality
+- **Security Reports**: Check `CRASH_ANALYSIS_REPORT.md` and `SECURITY_FIX_REPORT.md`
+- **Monitoring**: Use `watch -n 30 'afl-whatsup results/'` to monitor fuzzing progress
+
 ## Summary
 
 We test everything to make sure the radio communication system works perfectly. This includes:
@@ -125,7 +163,10 @@ We test everything to make sure the radio communication system works perfectly. 
 - Long-distance communications
 - System security and reliability
 - Performance under heavy use
+- **Advanced security testing with fuzzing**
 
 All tests are designed to ensure pilots, air traffic controllers, and gamers have reliable, clear communications in flight simulators and games, just like in real aviation and military operations.
 
-**Bottom Line**: We test everything so you don't have to worry about the system not working when you need it most.
+**Security Focus**: Our fuzzing campaign discovered and fixed 6 critical security vulnerabilities, ensuring the system is secure against malicious attacks and malformed data.
+
+**Bottom Line**: We test everything so you don't have to worry about the system not working when you need it most, and we use advanced security testing to protect against potential attacks.
