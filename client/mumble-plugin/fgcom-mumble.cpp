@@ -871,13 +871,18 @@ MumbleStringWrapper mumble_getAuthor() {
 MumbleStringWrapper mumble_getDescription() {
     const mumble_version_t version = mumble_getVersion();
     
-    char *description = (char *)malloc(sizeof(char)*128);
+    // CRITICAL SECURITY FIX: Use safe snprintf instead of sprintf
+    // Prevent buffer overflows and ensure null termination
+    const size_t description_size = 256; // Increased buffer size for safety
+    char *description = (char *)malloc(description_size);
     if (description != nullptr) {
-        int len = sprintf(description,
+        int len = snprintf(description, description_size,
             "FGCom-mumble %d.%d.%d provides an (aircraft) radio simulation.\n\nhttps://github.com/hbeni/fgcom-mumble",
             version.major, version.minor, version.patch);
-        if (len < 0)
-            throw std::system_error(std::make_error_code(std::errc::not_enough_memory), "sprintf failed when constructing description");
+        if (len < 0 || len >= static_cast<int>(description_size)) {
+            free(description);
+            throw std::system_error(std::make_error_code(std::errc::not_enough_memory), "snprintf failed when constructing description");
+        }
     } else {
         throw std::system_error(std::make_error_code(std::errc::not_enough_memory), "malloc failed when constructing description");
     }
@@ -1363,7 +1368,20 @@ bool mumble_onAudioSourceFetched(float *outputPCM, uint32_t sampleCount, uint16_
             }
             fgcom_remotecfg_mtx.unlock();
 
-            memset(outputPCM, 0x00, static_cast<size_t>(sampleCount*channelCount)*sizeof(float) );
+            // CRITICAL SECURITY FIX: Safe buffer clearing with bounds checking
+            // Prevent integer overflow and buffer overflows
+            if (sampleCount > 0 && channelCount > 0 && 
+                sampleCount <= 48000 && channelCount <= 8 && 
+                sampleCount * channelCount <= 48000 * 8) {
+                size_t buffer_size = static_cast<size_t>(sampleCount) * static_cast<size_t>(channelCount) * sizeof(float);
+                if (buffer_size > 0 && buffer_size <= 48000 * 8 * sizeof(float)) {
+                    memset(outputPCM, 0x00, buffer_size);
+                } else {
+                    pluginLog("[SECURITY] Invalid buffer size detected, skipping memset");
+                }
+            } else {
+                pluginLog("[SECURITY] Invalid audio parameters detected, skipping memset");
+            }
         }
         
         

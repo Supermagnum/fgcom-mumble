@@ -85,6 +85,33 @@ std::map<int, fgcom_client> fgcom_local_client;
 std::map<std::pair<std::string,uint16_t>, int> fgcom_udp_portMap; // host,port2iid
 bool fgcom_com_ptt_compatmode = false;
 std::map<int, fgcom_udp_parseMsg_result> fgcom_udp_parseMsg(char buffer[MAXLINE], uint16_t clientPort, std::string clientHost) {
+    // CRITICAL SECURITY FIX: Comprehensive input validation and sanitization
+    // Prevent buffer overflows, injection attacks, and malformed data processing
+    
+    // 1. Validate buffer pointer and ensure null termination
+    if (buffer == nullptr) {
+        pluginLog("[UDP-server] SECURITY ERROR: Null buffer pointer received");
+        return std::map<int, fgcom_udp_parseMsg_result>();
+    }
+    
+    // 2. Ensure buffer is null-terminated and within bounds
+    size_t buffer_len = strnlen(buffer, MAXLINE);
+    if (buffer_len >= MAXLINE) {
+        pluginLog("[UDP-server] SECURITY WARNING: Buffer not null-terminated, truncating");
+        buffer[MAXLINE-1] = '\0';
+        buffer_len = MAXLINE-1;
+    }
+    
+    // 3. Validate client host string for injection attacks
+    if (clientHost.length() > 256) {
+        pluginLog("[UDP-server] SECURITY WARNING: Client host too long, truncating");
+        clientHost = clientHost.substr(0, 256);
+    }
+    
+    // 4. Remove any control characters from client host
+    clientHost.erase(std::remove_if(clientHost.begin(), clientHost.end(),
+        [](char c) { return c < 32 || c > 126; }), clientHost.end());
+    
     pluginDbg("[UDP-server] received message (client="+clientHost+":"+std::to_string(clientPort)+"): "+std::string(buffer));
     //std::cout << "DBG: Stored local userID=" << localMumId <<std::endl;
     setlocale(LC_NUMERIC,"C"); // decimal points always ".", not ","
@@ -719,7 +746,14 @@ void fgcom_spawnUDPServer() {
             break;
         }
         
-        buffer[n] = '\0';
+        // CRITICAL SECURITY FIX: Safe buffer null termination with bounds checking
+        // Prevent buffer overflows and ensure proper string termination
+        if (n >= 0 && n < MAXLINE) {
+            buffer[n] = '\0';
+        } else {
+            pluginLog("[UDP-server] SECURITY WARNING: Invalid buffer length " + std::to_string(n) + ", truncating to safe size");
+            buffer[MAXLINE-1] = '\0';
+        }
         clientPort = ntohs(cliaddr.sin_port);
         clientHost = inet_ntoa(cliaddr.sin_addr);
         std::string clientHost_str = std::string(clientHost);

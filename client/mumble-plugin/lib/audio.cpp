@@ -162,10 +162,34 @@ void fgcom_audio_filter(int highpass_cutoff, int lowpass_cutoff, float *outputPC
     // CHANNEL DATA EXTRACTION:
     // Extract samples from the first channel (channel 0) for processing
     // This assumes all channels contain identical data (mono audio)
+    
+    // CRITICAL SECURITY FIX: Add bounds checking for audio buffer operations
+    // Prevent buffer overflows and ensure safe memory access
+    if (outputPCM == nullptr) {
+        pluginLog("[AUDIO] SECURITY ERROR: Null audio buffer pointer");
+        return;
+    }
+    
+    if (sampleCount == 0 || channelCount == 0) {
+        pluginLog("[AUDIO] SECURITY WARNING: Invalid audio parameters (samples=" + 
+                 std::to_string(sampleCount) + ", channels=" + std::to_string(channelCount) + ")");
+        return;
+    }
+    
+    // Validate buffer size to prevent integer overflow
+    if (sampleCount > 48000 || channelCount > 8) {
+        pluginLog("[AUDIO] SECURITY WARNING: Audio parameters exceed safe limits, clamping");
+        sampleCount = std::min(sampleCount, 48000u);
+        channelCount = std::min(channelCount, 8u);
+    }
+    
     uint32_t ai = 0;
-    for (uint32_t s=0; s<channelCount*sampleCount; s+=channelCount) {
-        audioData[ai] = outputPCM[s];  // Copy first channel sample
-        ai++;
+    uint32_t max_samples = std::min(sampleCount, static_cast<uint32_t>(audioData.size()));
+    for (uint32_t s=0; s<channelCount*sampleCount && ai < max_samples; s+=channelCount) {
+        if (s < channelCount*sampleCount) {  // Additional bounds check
+            audioData[ai] = outputPCM[s];  // Copy first channel sample
+            ai++;
+        }
     }
 
     // FREQUENCY FILTERING ALGORITHM:
