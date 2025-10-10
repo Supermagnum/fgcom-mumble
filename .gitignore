@@ -36,3 +36,21 @@ Thumbs.db
 *.tmp
 *.temp
 *.log.env
+
+# Environment files - NEVER commit these!
+.env
+.env.local
+.env.production
+.env.staging
+*.env
+
+# API keys and secrets
+*secret*
+*key*
+*password*
+*token*
+
+# Configuration files with sensitive data
+config.ini
+settings.ini
+secrets.json
