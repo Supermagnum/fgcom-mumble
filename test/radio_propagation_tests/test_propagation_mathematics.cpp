@@ -308,3 +308,4 @@ TEST_F(PropagationMathematicsTest, EdgeCasesAndBoundaryConditions) {
     double fresnel_short = calculateFresnelRadius(0.1, 0.1, 150.0, 0.2);
     EXPECT_GT(fresnel_short, 0.0) << "Fresnel radius should be positive";
 }
+
