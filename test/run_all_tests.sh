@@ -156,8 +156,6 @@ cat > test/test-logs/tests-passed_$(date +%Y%m%d_%H%M%S).md << EOF
 ## Testing Tools Used:
 - **Google Test:** 1.14.0
 - **RapidCheck:** Available and working
-- **AFL++:** Available
-- **Mull-17:** v0.26.1
 - **CMake:** 3.28.3
 - **Make:** Latest
 - **GCC:** 13.3.0

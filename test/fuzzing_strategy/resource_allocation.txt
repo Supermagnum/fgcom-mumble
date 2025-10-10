@@ -1,0 +1,45 @@
+FUZZING RESOURCE ALLOCATION SUMMARY
+==================================
+
+Total Resources:
+- 20 cores available
+- 6 hours execution time
+- 120 core-hours total capacity
+- 15 fuzzing targets
+
+TIER 1: CRITICAL TARGETS (8 cores, 6 hours each)
+- fuzz_network_protocol: 2 cores, 6h (Network-facing, attack surface)
+- fuzz_webrtc_operations: 2 cores, 6h (External interface, complexity)
+- fuzz_security_functions: 2 cores, 6h (Security-critical)
+- fuzz_atis_processing: 2 cores, 6h (Parsing external data)
+
+TIER 2: IMPORTANT TARGETS (6 cores, 6 hours each)
+- fuzz_audio_processing: 1 core, 6h (Crashes affect functionality)
+- fuzz_radio_propagation: 1 core, 6h (Core functionality)
+- fuzz_frequency_management: 1 core, 6h (Configuration bugs)
+- fuzz_agc_squelch: 1 core, 6h (Audio pipeline critical)
+- fuzz_database_operations: 1 core, 6h (Data corruption risk)
+- fuzz_error_handling: 1 core, 6h (Safety net testing)
+
+TIER 3: STANDARD TARGETS (6 cores, 2-3 hours each, rotating)
+- fuzz_antenna_patterns: 2 cores, 2h (Mathematical, stable)
+- fuzz_geographic_calculations: 2 cores, 2h (Mathematical, stable)
+- fuzz_status_page: 2 cores, 2h (Display only, low risk)
+- fuzz_integration_tests: 2 cores, 2h (Already covered by other tests)
+- fuzz_performance_tests: 2 cores, 2h (Not crash-focused)
+
+EXECUTION STRATEGIES:
+1. Parallel-First (Recommended): All Tier 1+2 simultaneously, Tier 3 rotating
+2. Sequential Priority: Tier 1 → Tier 2 → Tier 3 phases
+3. Staged Approach: All targets 3h, then focus on issues 3h
+
+EXPECTED OUTCOMES:
+- Network/Protocol targets: Most bugs found
+- Security targets: High-value vulnerabilities  
+- Mathematical targets: Quick coverage saturation
+- Integration targets: Likely redundant
+
+TOTAL CORE-HOURS: 120
+AVERAGE PER TARGET: 8 core-hours
+HIGH-PRIORITY TARGETS: 12-24 core-hours each
+LOW-PRIORITY TARGETS: 4-6 core-hours each

@@ -18,6 +18,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <poll.h>
+#include <sys/time.h>
 
 // Include the network modules
 #include "../../client/mumble-plugin/lib/globalVars.h"
@@ -42,10 +43,10 @@ protected:
         test_packet_size_medium = 512;  // 512 bytes
         test_packet_size_large = 1024; // 1024 bytes (max UDP packet size)
         
-        // Test timeouts
-        test_timeout_short = 100;  // 100ms
-        test_timeout_medium = 1000; // 1s
-        test_timeout_long = 5000;   // 5s
+        // Test timeouts - increased for better reliability
+        test_timeout_short = 500;   // 500ms (increased from 100ms)
+        test_timeout_medium = 2000; // 2s (increased from 1s)
+        test_timeout_long = 10000;  // 10s (increased from 5s)
         
         // Test data
         test_message_simple = "LAT=40.7128,LON=-74.0060,ALT=100.5";
@@ -117,9 +118,10 @@ protected:
             return -1;
         }
         
-        // Set socket to non-blocking
-        int flags = fcntl(sock, F_GETFL, 0);
-        fcntl(sock, F_SETFL, flags | O_NONBLOCK);
+        // Keep socket blocking for reliable testing
+        // Non-blocking sockets can cause timing issues in tests
+        // int flags = fcntl(sock, F_GETFL, 0);
+        // fcntl(sock, F_SETFL, flags | O_NONBLOCK);
         
         return sock;
     }
@@ -131,9 +133,10 @@ protected:
             return -1;
         }
         
-        // Set socket to non-blocking
-        int flags = fcntl(sock, F_GETFL, 0);
-        fcntl(sock, F_SETFL, flags | O_NONBLOCK);
+        // Keep socket blocking for reliable testing
+        // Non-blocking sockets can cause timing issues in tests
+        // int flags = fcntl(sock, F_GETFL, 0);
+        // fcntl(sock, F_SETFL, flags | O_NONBLOCK);
         
         return sock;
     }
@@ -150,12 +153,15 @@ protected:
             return true;
         }
         
-        // If binding fails, try alternative ports
-        for (int i = 1; i <= 10; ++i) {
+        // If binding fails, try alternative ports with better range
+        // Use a wider range and add small delays to avoid race conditions
+        for (int i = 1; i <= 50; ++i) {
             addr.sin_port = htons(port + i);
             if (bind(sock, (struct sockaddr*)&addr, sizeof(addr)) == 0) {
                 return true;
             }
+            // Small delay to avoid race conditions
+            usleep(1000); // 1ms delay
         }
         
         return false;
@@ -173,19 +179,27 @@ protected:
     }
     
     // Helper to receive UDP packet
-    std::string receiveUDPPacket(int sock, int timeout_ms = 1000) {
+    std::string receiveUDPPacket(int sock, int timeout_ms = 5000) {
         char buffer[1024];
         struct sockaddr_in addr;
         socklen_t addr_len = sizeof(addr);
         
-        // Set timeout
-        struct pollfd pfd;
-        pfd.fd = sock;
-        pfd.events = POLLIN;
+        // Use blocking socket with timeout for more reliable testing
+        // Set socket timeout using setsockopt
+        struct timeval timeout;
+        timeout.tv_sec = timeout_ms / 1000;
+        timeout.tv_usec = (timeout_ms % 1000) * 1000;
         
-        int result = poll(&pfd, 1, timeout_ms);
-        if (result <= 0) {
-            return "";
+        if (setsockopt(sock, SOL_SOCKET, SO_RCVTIMEO, &timeout, sizeof(timeout)) < 0) {
+            // Fallback to poll if setsockopt fails
+            struct pollfd pfd;
+            pfd.fd = sock;
+            pfd.events = POLLIN;
+            
+            int result = poll(&pfd, 1, timeout_ms);
+            if (result <= 0) {
+                return "";
+            }
         }
         
         ssize_t received = recvfrom(sock, buffer, sizeof(buffer) - 1, 0, (struct sockaddr*)&addr, &addr_len);

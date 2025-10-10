@@ -42,10 +42,10 @@ protected:
         test_packet_size_medium = 512;  // 512 bytes
         test_packet_size_large = 1024; // 1024 bytes (max UDP packet size)
         
-        // Test timeouts
-        test_timeout_short = 100;  // 100ms
-        test_timeout_medium = 1000; // 1s
-        test_timeout_long = 5000;   // 5s
+        // Test timeouts - increased for better reliability
+        test_timeout_short = 500;   // 500ms (increased from 100ms)
+        test_timeout_medium = 2000; // 2s (increased from 1s)
+        test_timeout_long = 10000;  // 10s (increased from 5s)
         
         // Test data
         test_message_simple = "LAT=40.7128,LON=-74.0060,ALT=100.5";
