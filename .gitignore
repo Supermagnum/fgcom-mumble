@@ -1,82 +1,38 @@
-# Prerequisites
-*.d
+# Fuzzing temporary files
+crash_*.txt
+logs/
+results/
+fuzzing_pids.txt
+tier*_fuzzing_pids.txt
 
-# Compiled Object files
-*.slo
-*.lo
+# Build artifacts
 *.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
 *.so
-*.dylib
-*.bundle
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
 *.a
-*.lib
+build/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
 
-# Executables
-*.exe
-*.out
-*.app
-geotest
-frqtest
-fgcom*.jar
-FGCom*.jar
-*.catch2
+# Test outputs
+*.gcno
+*.gcda
+*.gcov
+test_results/
+test-logs/
 
-# Certs
-*.pem
-*.key
-*.crt
-*.csr
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
 
-# radio samples
-*.fgcs
+# OS files
+.DS_Store
+Thumbs.db
 
-# misc
-*.csv
+# Temporary files
+*.tmp
+*.temp
 *.log
-dllResource.rc
-
-# Archives
-*.zip
-*.tar.gz
-*.mumble_plugin
-
-# runtime config
-fgcom-mumble_LOCAL.ini
-server/statuspage/config.ini
-*.stats
-*.db
-
-# Maven build directories
-/client/radioGUI/target/
-/client/radioGUI/lib/jsimconnect/target/
-
-# Java compiled files
-*.class
-
-# Maven dependencies (if installed locally)
-.m2/
-test/fuzzing_tests/mull/
-test/rapidcheck_tests/lib/rapidcheck/
-
-# Test logs and results
-test/test-logs/
-test/*/test_results/
-test/*/coverage/
-test/*/sanitizer_results/
-test/*/test_output.log
