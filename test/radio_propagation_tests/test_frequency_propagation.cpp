@@ -10,9 +10,9 @@ TEST_F(FrequencyPropagationTest, VHFPropagation) {
     EXPECT_GE(frequency_mhz, 118.0) << "VHF frequency should be in range";
     EXPECT_LE(frequency_mhz, 137.0) << "VHF frequency should be in range";
     
-    // Calculate free space path loss for VHF
-    double wavelength_m = 300.0 / frequency_mhz;
-    double free_space_loss_db = 20.0 * std::log10(4.0 * M_PI * distance_km * 1000.0 / wavelength_m);
+    // Calculate free space path loss for VHF using documented formula
+    // L_fs = 20 * log10(d) + 20 * log10(f) + 32.45
+    double free_space_loss_db = 20.0 * std::log10(distance_km) + 20.0 * std::log10(frequency_mhz) + 32.45;
     
     EXPECT_GT(free_space_loss_db, 0.0) << "Free space loss should be positive";
     EXPECT_LT(free_space_loss_db, 200.0) << "Free space loss should be reasonable";
@@ -42,16 +42,15 @@ TEST_F(FrequencyPropagationTest, UHFPropagation) {
     EXPECT_GE(frequency_mhz, 225.0) << "UHF frequency should be in range";
     EXPECT_LE(frequency_mhz, 400.0) << "UHF frequency should be in range";
     
-    // Calculate free space path loss for UHF
-    double wavelength_m = 300.0 / frequency_mhz;
-    double free_space_loss_db = 20.0 * std::log10(4.0 * M_PI * distance_km * 1000.0 / wavelength_m);
+    // Calculate free space path loss for UHF using documented formula
+    // L_fs = 20 * log10(d) + 20 * log10(f) + 32.45
+    double free_space_loss_db = 20.0 * std::log10(distance_km) + 20.0 * std::log10(frequency_mhz) + 32.45;
     
     EXPECT_GT(free_space_loss_db, 0.0) << "Free space loss should be positive";
     
     // UHF should have higher path loss than VHF
     double vhf_frequency = 118.0;
-    double vhf_wavelength = 300.0 / vhf_frequency;
-    double vhf_loss = 20.0 * std::log10(4.0 * M_PI * distance_km * 1000.0 / vhf_wavelength);
+    double vhf_loss = 20.0 * std::log10(distance_km) + 20.0 * std::log10(vhf_frequency) + 32.45;
     
     EXPECT_GT(free_space_loss_db, vhf_loss) << "UHF should have higher path loss than VHF";
     
@@ -69,16 +68,15 @@ TEST_F(FrequencyPropagationTest, HFPropagation) {
     EXPECT_GE(frequency_mhz, 3.0) << "HF frequency should be in range";
     EXPECT_LE(frequency_mhz, 30.0) << "HF frequency should be in range";
     
-    // Calculate free space path loss for HF
-    double wavelength_m = 300.0 / frequency_mhz;
-    double free_space_loss_db = 20.0 * std::log10(4.0 * M_PI * distance_km * 1000.0 / wavelength_m);
+    // Calculate free space path loss for HF using documented formula
+    // L_fs = 20 * log10(d) + 20 * log10(f) + 32.45
+    double free_space_loss_db = 20.0 * std::log10(distance_km) + 20.0 * std::log10(frequency_mhz) + 32.45;
     
     EXPECT_GT(free_space_loss_db, 0.0) << "Free space loss should be positive";
     
     // HF should have lower path loss than VHF/UHF
     double vhf_frequency = 118.0;
-    double vhf_wavelength = 300.0 / vhf_frequency;
-    double vhf_loss = 20.0 * std::log10(4.0 * M_PI * distance_km * 1000.0 / vhf_wavelength);
+    double vhf_loss = 20.0 * std::log10(distance_km) + 20.0 * std::log10(vhf_frequency) + 32.45;
     
     EXPECT_LT(free_space_loss_db, vhf_loss) << "HF should have lower path loss than VHF";
     

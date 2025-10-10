@@ -19,22 +19,30 @@ TOTAL_TIME_SECONDS=21600  # 6 hours
 TIMEOUT_PER_TARGET=21600
 
 # Fuzzing targets array with their corresponding binaries
+# Each target uses the appropriate tier binary based on its criticality
 declare -A TARGET_BINARIES=(
-    ["fuzz_radio_propagation"]="./test/fuzzing_strategy/build/tier2_important"
-    ["fuzz_audio_processing"]="./test/fuzzing_strategy/build/tier2_important"
-    ["fuzz_antenna_patterns"]="./test/fuzzing_strategy/build/tier3_standard"
-    ["fuzz_frequency_management"]="./test/fuzzing_strategy/build/tier2_important"
-    ["fuzz_agc_squelch"]="./test/fuzzing_strategy/build/tier2_important"
-    ["fuzz_network_protocol"]="./test/fuzzing_strategy/build/tier1_critical"
-    ["fuzz_geographic_calculations"]="./test/fuzzing_strategy/build/tier3_standard"
-    ["fuzz_atis_processing"]="./test/fuzzing_strategy/build/tier1_critical"
-    ["fuzz_database_operations"]="./test/fuzzing_strategy/build/tier2_important"
-    ["fuzz_security_functions"]="./test/fuzzing_strategy/build/tier1_critical"
-    ["fuzz_status_page"]="./test/fuzzing_strategy/build/tier3_standard"
-    ["fuzz_webrtc_operations"]="./test/fuzzing_strategy/build/tier1_critical"
-    ["fuzz_integration_tests"]="./test/fuzzing_strategy/build/tier3_standard"
-    ["fuzz_performance_tests"]="./test/fuzzing_strategy/build/tier3_standard"
-    ["fuzz_error_handling"]="./test/fuzzing_strategy/build/tier2_important"
+    ["fuzz_radio_propagation"]="../../test/fuzzing_strategy/build/tier2_important"
+    ["fuzz_audio_processing"]="../../test/fuzzing_strategy/build/tier2_important"
+    ["fuzz_antenna_patterns"]="../../test/fuzzing_strategy/build/tier3_standard"
+    ["fuzz_frequency_management"]="../../test/fuzzing_strategy/build/tier2_important"
+    ["fuzz_agc_squelch"]="../../test/fuzzing_strategy/build/tier2_important"
+    ["fuzz_network_protocol"]="../../test/fuzzing_strategy/build/tier1_critical"
+    ["fuzz_geographic_calculations"]="../../test/fuzzing_strategy/build/tier3_standard"
+    ["fuzz_atis_processing"]="../../test/fuzzing_strategy/build/tier1_critical"
+    ["fuzz_database_operations"]="../../test/fuzzing_strategy/build/tier2_important"
+    ["fuzz_security_functions"]="../../test/fuzzing_strategy/build/tier1_critical"
+    ["fuzz_status_page"]="../../test/fuzzing_strategy/build/tier3_standard"
+    ["fuzz_webrtc_operations"]="../../test/fuzzing_strategy/build/tier1_critical"
+    ["fuzz_integration_tests"]="../../test/fuzzing_strategy/build/tier3_standard"
+    ["fuzz_performance_tests"]="../../test/fuzzing_strategy/build/tier3_standard"
+    ["fuzz_error_handling"]="../../test/fuzzing_strategy/build/tier2_important"
+)
+
+# Tier-based binaries for verification
+TIER_BINARIES=(
+    "../../test/fuzzing_strategy/build/tier1_critical"
+    "../../test/fuzzing_strategy/build/tier2_important"
+    "../../test/fuzzing_strategy/build/tier3_standard"
 )
 
 # Get target names for iteration
@@ -74,20 +82,27 @@ check_prerequisites() {
         print_warning "Consider reducing TOTAL_CORES or using fewer parallel targets"
     fi
     
-    # Check if target binaries exist
-    MISSING_TARGETS=()
-    for target in "${TARGETS[@]}"; do
-        binary_path="${TARGET_BINARIES[$target]}"
-        if [ ! -f "$binary_path" ]; then
-            MISSING_TARGETS+=("$target ($binary_path)")
+    # Check if tier binaries exist
+    MISSING_BINARIES=()
+    for binary in "${TIER_BINARIES[@]}"; do
+        if [ ! -f "$binary" ]; then
+            MISSING_BINARIES+=("$binary")
         fi
     done
     
-    if [ ${#MISSING_TARGETS[@]} -gt 0 ]; then
-        print_error "Missing target binaries: ${MISSING_TARGETS[*]}"
+    if [ ${#MISSING_BINARIES[@]} -gt 0 ]; then
+        print_error "Missing tier binaries: ${MISSING_BINARIES[*]}"
         print_error "Please build the fuzzing targets first"
         exit 1
     fi
+    
+    # Verify tier binaries are executable
+    for binary in "${TIER_BINARIES[@]}"; do
+        if [ ! -x "$binary" ]; then
+            print_error "Binary $binary is not executable"
+            exit 1
+        fi
+    done
     
     print_success "Prerequisites check passed"
 }

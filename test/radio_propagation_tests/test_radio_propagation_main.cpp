@@ -18,6 +18,9 @@
 #include "../../client/mumble-plugin/lib/antenna_orientation_calculator.h"
 #include "../../client/mumble-plugin/lib/pattern_interpolation.h"
 
+// Include mathematical model tests
+#include "test_propagation_mathematics.cpp"
+
 // Test fixtures and utilities
 class Radio_Propagation_Test : public ::testing::Test {
 protected:

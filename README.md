@@ -360,4 +360,49 @@ The project lives on GitHub: https://github.com/Supermagnum/fgcom-mumble
 - **[Testing Guide](docs/TESTING_GUIDE.md)** - Simple explanation of what all tests do (non-programmer friendly)
 - **[Test Results](test/tests-passed.md)** - Test suite execution results and coverage analysis
 
+### Test Locations
+
+#### Unit and Integration Tests
+- **[Radio Propagation Tests](test/radio_propagation_tests/)** - Mathematical model validation and propagation calculations
+- **[Audio Processing Tests](test/audio_processing_tests/)** - DSP algorithms, noise reduction, and audio quality validation
+- **[Antenna Pattern Tests](test/antenna_pattern_module_tests/)** - 3D radiation pattern accuracy and antenna modeling
+- **[Frequency Management Tests](test/frequency_management_tests/)** - Frequency allocation, interference detection, and band management
+- **[AGC/Squelch Tests](test/agc_squelch_tests/)** - Automatic gain control and squelch threshold validation
+- **[Network Protocol Tests](test/network_module_tests/)** - UDP communication, message parsing, and protocol compliance
+- **[Geographic Tests](test/geographic_module_tests/)** - Coordinate calculations, distance measurements, and terrain analysis
+- **[ATIS Processing Tests](test/atis_module_tests/)** - Airport information service and automated announcements
+- **[Database Tests](test/database_configuration_module_tests/)** - Data persistence, configuration management, and query optimization
+- **[Security Tests](test/security_module_tests/)** - Authentication, authorization, and input validation
+- **[Status Page Tests](test/status_page_module_tests/)** - Web interface, real-time updates, and monitoring
+- **[WebRTC Tests](test/webrtc_api_tests/)** - Browser compatibility, audio streaming, and cross-platform support
+- **[Integration Tests](test/integration_tests/)** - End-to-end system validation and component interaction
+- **[Performance Tests](test/performance_tests/)** - Load testing, memory usage, and optimization validation
+- **[Error Handling Tests](test/error_handling_tests/)** - Exception handling, recovery mechanisms, and graceful degradation
+
+#### Advanced Testing
+- **[Fuzzing Campaign](scripts/fuzzing/)** - 6-hour AFL++ fuzzing campaign across 15 targets (120 core-hours)
+- **[Property-Based Testing](test/rapidcheck_tests/)** - RapidCheck property-based testing for mathematical correctness
+- **[Edge Case Coverage](test/edge_case_coverage_tests/)** - Boundary condition testing and extreme scenario validation
+- **[Diagnostic Examples](test/diagnostic_examples/)** - Troubleshooting scenarios and diagnostic procedures
+
+#### Test Execution
+- **[Run All Tests](test/run_all_tests.sh)** - Execute complete test suite
+- **[Fuzzing Scripts](scripts/fuzzing/run_fuzzing.sh)** - Comprehensive fuzzing execution
+- **[Test Results](test/test_results/)** - Detailed test execution reports and coverage analysis
+
+
+This code was built with AI assistance. 
+I cannot program at all, but I can understand some compiler warnings and understand some log files.
+The code has proper formulas and calculations throughout.
+"Is these claims bullshit?" has one definitive answer:
+Run the tests. Examine what they do. Examine the mathematics. Read the documentation.
+
+
+
+
+
+
+
+
+
 
