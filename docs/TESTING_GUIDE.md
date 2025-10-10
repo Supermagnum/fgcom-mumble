@@ -144,7 +144,6 @@ Testing is like checking that a car works properly before you drive it. We test 
   - `./scripts/fuzzing/fuzz_tier1_critical.sh` - Critical security targets
   - `./scripts/fuzzing/fuzz_tier2_important.sh` - Important system components
   - `./scripts/fuzzing/fuzz_tier3_standard.sh` - Standard functionality
-- **Security Reports**: Check `CRASH_ANALYSIS_REPORT.md` and `SECURITY_FIX_REPORT.md`
 - **Monitoring**: Use `watch -n 30 'afl-whatsup results/'` to monitor fuzzing progress
 
 ## Summary
