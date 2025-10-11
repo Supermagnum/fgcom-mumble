@@ -1,1 +1,9 @@
-fuzzing input for fuzz_webrtc_operations
+{
+  "type": "",
+  "sdp": "",
+  "ice_candidates": null,
+  "dtls_fingerprint": "",
+  "connection_state": "failed",
+  "ice_connection_state": "disconnected",
+  "ice_gathering_state": "new"
+}

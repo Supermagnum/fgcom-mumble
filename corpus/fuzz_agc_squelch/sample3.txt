@@ -1,1 +1,11 @@
-fuzzing input for fuzz_agc_squelch
+{
+  "input_level": 0.0,
+  "target_level": 0.0,
+  "max_gain": 0.0,
+  "min_gain": 0.0,
+  "attack_time": 0.0,
+  "release_time": 0.0,
+  "squelch_threshold": 0.0,
+  "squelch_hold_time": 0.0,
+  "squelch_release_time": 0.0
+}

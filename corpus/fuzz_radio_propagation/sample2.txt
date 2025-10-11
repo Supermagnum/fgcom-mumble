@@ -1,1 +1,11 @@
-test data for fuzz_radio_propagation
+{
+  "frequency": 118.1,
+  "power": 100.0,
+  "antenna_height": 200.0,
+  "distance": 150.0,
+  "terrain": "mountainous",
+  "weather": "storm",
+  "atmospheric_pressure": 1013.25,
+  "temperature": 15.0,
+  "humidity": 80.0
+}

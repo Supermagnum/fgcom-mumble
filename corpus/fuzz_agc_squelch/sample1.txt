@@ -1,1 +1,11 @@
-sample input for fuzz_agc_squelch
+{
+  "input_level": -20.0,
+  "target_level": -18.0,
+  "max_gain": 20.0,
+  "min_gain": -20.0,
+  "attack_time": 0.01,
+  "release_time": 0.1,
+  "squelch_threshold": -40.0,
+  "squelch_hold_time": 0.1,
+  "squelch_release_time": 0.5
+}

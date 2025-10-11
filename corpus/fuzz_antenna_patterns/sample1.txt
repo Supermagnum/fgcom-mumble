@@ -1,1 +1,9 @@
-sample input for fuzz_antenna_patterns
+{
+  "antenna_type": "omnidirectional",
+  "frequency": 121.5,
+  "gain": 0.0,
+  "beamwidth": 360.0,
+  "elevation": 0.0,
+  "azimuth": 0.0,
+  "pattern_type": "isotropic"
+}

@@ -1,1 +1,13 @@
-test data for fuzz_agc_squelch
+{
+  "input_level": -60.0,
+  "target_level": -12.0,
+  "max_gain": 30.0,
+  "min_gain": -30.0,
+  "attack_time": 0.001,
+  "release_time": 1.0,
+  "squelch_threshold": -80.0,
+  "squelch_hold_time": 0.5,
+  "squelch_release_time": 2.0,
+  "agc_mode": "fast",
+  "squelch_mode": "auto"
+}

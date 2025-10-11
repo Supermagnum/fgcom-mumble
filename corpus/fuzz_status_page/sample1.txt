@@ -1,1 +1,32 @@
-sample input for fuzz_status_page
+{
+  "server_name": "FGCom-Mumble Server",
+  "version": "1.3.0",
+  "uptime": 86400,
+  "status": "online",
+  "connections": {
+    "active": 25,
+    "max": 100,
+    "peak": 150
+  },
+  "performance": {
+    "cpu_usage": 15.5,
+    "memory_usage": 256.7,
+    "disk_usage": 1024.0,
+    "network_io": {
+      "bytes_in": 1048576,
+      "bytes_out": 2097152
+    }
+  },
+  "services": [
+    {
+      "name": "radio_service",
+      "status": "running",
+      "uptime": 3600
+    },
+    {
+      "name": "audio_service", 
+      "status": "running",
+      "uptime": 3600
+    }
+  ]
+}

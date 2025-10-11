@@ -1,1 +1,13 @@
-sample input for fuzz_error_handling
+{
+  "error_type": "network_timeout",
+  "severity": "warning",
+  "message": "Connection timeout after 30 seconds",
+  "code": 1001,
+  "timestamp": 1640995200,
+  "context": {
+    "operation": "radio_transmission",
+    "frequency": 121.5,
+    "retry_count": 3
+  },
+  "recovery_action": "retry_with_backoff"
+}

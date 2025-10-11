@@ -1,1 +1,15 @@
-sample input for fuzz_geographic_calculations
+{
+  "point1": {
+    "latitude": 40.7128,
+    "longitude": -74.0060,
+    "altitude": 100.0
+  },
+  "point2": {
+    "latitude": 34.0522,
+    "longitude": -118.2437,
+    "altitude": 200.0
+  },
+  "calculation_type": "distance_bearing",
+  "units": "nautical_miles",
+  "earth_model": "WGS84"
+}

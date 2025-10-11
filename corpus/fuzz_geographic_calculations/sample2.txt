@@ -1,1 +1,20 @@
-test data for fuzz_geographic_calculations
+{
+  "point1": {
+    "latitude": 51.5074,
+    "longitude": -0.1278,
+    "altitude": 50.0
+  },
+  "point2": {
+    "latitude": 48.8566,
+    "longitude": 2.3522,
+    "altitude": 75.0
+  },
+  "calculation_type": "great_circle",
+  "units": "kilometers",
+  "earth_model": "GRS80",
+  "bearing": {
+    "initial": 135.5,
+    "final": 140.2
+  },
+  "distance": 344.0
+}

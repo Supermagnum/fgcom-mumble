@@ -1,1 +1,12 @@
-test data for fuzz_webrtc_operations
+{
+  "type": "answer",
+  "sdp": "v=0\r\no=- 9876543210 9876543210 IN IP4 10.0.0.50\r\ns=-\r\nt=0 0\r\nm=audio 5004 RTP/SAVPF 111\r\na=rtpmap:111 opus/48000/2\r\na=sendrecv\r\na=ice-ufrag:abcd1234\r\na=ice-pwd:efgh5678",
+  "ice_candidates": [
+    {
+      "candidate": "candidate:2 1 UDP 1694498815 10.0.0.50 5004 typ srflx raddr 192.168.1.100 rport 5004",
+      "sdp_mid": "0",
+      "sdp_mline_index": 0
+    }
+  ],
+  "dtls_fingerprint": "sha-256 AB:CD:EF:12:34:56:78:90:AB:CD:EF:12:34:56:78:90:AB:CD:EF:12:34:56:78:90:AB:CD:EF:12:34:56:78:90"
+}

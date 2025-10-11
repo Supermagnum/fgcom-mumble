@@ -1,1 +1,10 @@
-fuzzing input for fuzz_frequency_management
+{
+  "frequency": -1.0,
+  "band": "",
+  "type": null,
+  "range": [0.0, 0.0],
+  "step": 0.0,
+  "modulation": "",
+  "power_limit": -1.0,
+  "channel_spacing": 0.0
+}

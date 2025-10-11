@@ -1,1 +1,14 @@
-test data for fuzz_frequency_management
+{
+  "frequency": 243.0,
+  "band": "UHF",
+  "type": "military",
+  "range": [225.0, 400.0],
+  "step": 0.025,
+  "modulation": "FM",
+  "power_limit": 50.0,
+  "channel_spacing": 0.025,
+  "guard_bands": [
+    {"start": 240.0, "end": 241.0},
+    {"start": 245.0, "end": 246.0}
+  ]
+}

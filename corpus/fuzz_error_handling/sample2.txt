@@ -1,1 +1,19 @@
-test data for fuzz_error_handling
+{
+  "error_type": "audio_processing_failure",
+  "severity": "critical",
+  "message": "Audio buffer overflow detected",
+  "code": 2001,
+  "timestamp": 1640995200,
+  "context": {
+    "buffer_size": 4096,
+    "sample_rate": 48000,
+    "channels": 2,
+    "buffer_usage": 1.0
+  },
+  "recovery_action": "reset_audio_pipeline",
+  "stack_trace": [
+    "audio_process() at audio.c:123",
+    "process_audio_frame() at audio.c:456",
+    "main_loop() at main.c:789"
+  ]
+}

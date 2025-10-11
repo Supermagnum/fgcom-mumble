@@ -1,1 +1,11 @@
-sample input for fuzz_network_protocol
+{
+  "protocol": "UDP",
+  "port": 64738,
+  "packet_type": "audio",
+  "sequence": 1,
+  "timestamp": 1640995200,
+  "payload": "SGVsbG8gV29ybGQ=",
+  "checksum": "a1b2c3d4",
+  "compression": false,
+  "encryption": false
+}

@@ -1,1 +1,9 @@
-fuzzing input for fuzz_status_page
+{
+  "server_name": "",
+  "version": null,
+  "uptime": -1,
+  "status": "",
+  "connections": null,
+  "performance": null,
+  "services": null
+}

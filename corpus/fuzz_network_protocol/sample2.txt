@@ -1,1 +1,16 @@
-test data for fuzz_network_protocol
+{
+  "protocol": "TCP",
+  "port": 443,
+  "packet_type": "control",
+  "sequence": 65535,
+  "timestamp": 0,
+  "payload": "",
+  "checksum": null,
+  "compression": true,
+  "encryption": true,
+  "headers": {
+    "content_type": "application/json",
+    "content_length": 0,
+    "user_agent": "FGCom-Mumble/1.3.0"
+  }
+}

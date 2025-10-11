@@ -1,1 +1,8 @@
-fuzzing input for fuzz_radio_propagation
+{
+  "frequency": 0.001,
+  "power": 0.0,
+  "antenna_height": 0.0,
+  "distance": 0.0,
+  "terrain": "",
+  "weather": null
+}

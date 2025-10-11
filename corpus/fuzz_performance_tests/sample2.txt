@@ -1,1 +1,21 @@
-test data for fuzz_performance_tests
+{
+  "test_type": "stress_test",
+  "duration": 600.0,
+  "concurrent_users": 1000,
+  "operations_per_second": 500,
+  "metrics": {
+    "cpu_threshold": 95.0,
+    "memory_threshold": 4096.0,
+    "latency_threshold": 500.0,
+    "throughput_threshold": 5000.0
+  },
+  "test_scenarios": [
+    "high_frequency_audio",
+    "concurrent_radio_channels",
+    "database_heavy_operations",
+    "network_flooding"
+  ],
+  "ramp_up_time": 60.0,
+  "sustained_load_time": 480.0,
+  "ramp_down_time": 60.0
+}

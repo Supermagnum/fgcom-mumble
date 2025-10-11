@@ -1,1 +1,23 @@
-test data for fuzz_status_page
+{
+  "server_name": "FGCom-Mumble Test Server",
+  "version": "1.3.0-dev",
+  "uptime": 0,
+  "status": "maintenance",
+  "connections": {
+    "active": 0,
+    "max": 1000,
+    "peak": 0
+  },
+  "performance": {
+    "cpu_usage": 0.0,
+    "memory_usage": 0.0,
+    "disk_usage": 0.0,
+    "network_io": {
+      "bytes_in": 0,
+      "bytes_out": 0
+    }
+  },
+  "services": [],
+  "maintenance_mode": true,
+  "scheduled_restart": "2024-01-01T00:00:00Z"
+}

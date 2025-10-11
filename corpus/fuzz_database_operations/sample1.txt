@@ -1,1 +1,12 @@
-sample input for fuzz_database_operations
+{
+  "operation": "SELECT",
+  "table": "users",
+  "columns": ["id", "username", "email"],
+  "where": {
+    "username": "pilot123",
+    "active": true
+  },
+  "limit": 100,
+  "offset": 0,
+  "order_by": "created_at DESC"
+}

@@ -1,1 +1,8 @@
-sample input for fuzz_radio_propagation
+{
+  "frequency": 121.5,
+  "power": 25.0,
+  "antenna_height": 100.0,
+  "distance": 50.0,
+  "terrain": "flat",
+  "weather": "clear"
+}

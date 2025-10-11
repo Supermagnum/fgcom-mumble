@@ -1,1 +1,12 @@
-sample input for fuzz_webrtc_operations
+{
+  "type": "offer",
+  "sdp": "v=0\r\no=- 1234567890 1234567890 IN IP4 192.168.1.100\r\ns=-\r\nt=0 0\r\nm=audio 5004 RTP/SAVPF 111\r\na=rtpmap:111 opus/48000/2\r\na=sendrecv",
+  "ice_candidates": [
+    {
+      "candidate": "candidate:1 1 UDP 2113667326 192.168.1.100 5004 typ host",
+      "sdp_mid": "0",
+      "sdp_mline_index": 0
+    }
+  ],
+  "dtls_fingerprint": "sha-256 12:34:56:78:90:AB:CD:EF:12:34:56:78:90:AB:CD:EF:12:34:56:78:90:AB:CD:EF:12:34:56:78:90:AB:CD:EF"
+}

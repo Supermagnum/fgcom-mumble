@@ -1,0 +1,24 @@
+{
+  "type": "candidate",
+  "candidate": {
+    "candidate": "candidate:3 1 UDP 1694498815 203.0.113.1 5004 typ relay raddr 192.168.1.100 rport 5004",
+    "sdp_mid": "0",
+    "sdp_mline_index": 0,
+    "username_fragment": "abcd1234"
+  },
+  "ice_servers": [
+    {
+      "urls": "stun:stun.l.google.com:19302",
+      "username": "user",
+      "credential": "pass"
+    },
+    {
+      "urls": "turn:turn.example.com:3478",
+      "username": "user",
+      "credential": "pass"
+    }
+  ],
+  "ice_transport_policy": "all",
+  "bundle_policy": "max-bundle",
+  "rtcp_mux_policy": "require"
+}

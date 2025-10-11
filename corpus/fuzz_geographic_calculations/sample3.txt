@@ -1,1 +1,15 @@
-fuzzing input for fuzz_geographic_calculations
+{
+  "point1": {
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "altitude": 0.0
+  },
+  "point2": {
+    "latitude": 0.0,
+    "longitude": 0.0,
+    "altitude": 0.0
+  },
+  "calculation_type": "",
+  "units": "",
+  "earth_model": null
+}

@@ -1,1 +1,21 @@
-test data for fuzz_integration_tests
+{
+  "test_scenario": "network_webrtc_integration",
+  "components": [
+    "network_protocol",
+    "webrtc_operations",
+    "security_functions"
+  ],
+  "test_data": {
+    "protocol": "UDP",
+    "webrtc_offer": "v=0\r\no=- 1234567890 1234567890 IN IP4 192.168.1.100\r\ns=-\r\nt=0 0\r\nm=audio 5004 RTP/SAVPF 111",
+    "encryption": true
+  },
+  "expected_behavior": "secure_connection_established",
+  "timeout": 60.0,
+  "retry_count": 5,
+  "validation_checks": [
+    "connection_established",
+    "audio_flowing",
+    "encryption_active"
+  ]
+}

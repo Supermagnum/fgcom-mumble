@@ -1,0 +1,28 @@
+{
+  "sample_rate": 8000,
+  "channels": 1,
+  "bit_depth": 8,
+  "format": "PCM_MULAW",
+  "duration": 10.0,
+  "gain": 0.1,
+  "noise_gate": -80.0,
+  "agc": {
+    "enabled": true,
+    "target_level": -12.0,
+    "max_gain": 30.0,
+    "min_gain": -30.0,
+    "attack_time": 0.001,
+    "release_time": 0.1
+  },
+  "vad": {
+    "enabled": true,
+    "threshold": -40.0,
+    "hold_time": 0.1,
+    "release_time": 0.5
+  },
+  "echo_cancellation": {
+    "enabled": true,
+    "filter_length": 1024,
+    "adaptation_rate": 0.01
+  }
+}

@@ -1,1 +1,11 @@
-fuzzing input for fuzz_network_protocol
+{
+  "protocol": "",
+  "port": -1,
+  "packet_type": null,
+  "sequence": 999999,
+  "timestamp": -1,
+  "payload": null,
+  "checksum": "",
+  "compression": null,
+  "encryption": null
+}

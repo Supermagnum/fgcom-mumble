@@ -1,1 +1,23 @@
-sample input for fuzz_atis_processing
+{
+  "airport": "KJFK",
+  "information": "A",
+  "timestamp": "202401011200Z",
+  "weather": {
+    "wind": "270/15G25KT",
+    "visibility": "10SM",
+    "ceiling": "OVC050",
+    "temperature": "15/10",
+    "altimeter": "29.92"
+  },
+  "runways": [
+    {
+      "id": "04L/22R",
+      "condition": "WET",
+      "length": 12000,
+      "width": 150
+    }
+  ],
+  "notams": [
+    "RWY 04L/22R CLSD 0100-0500Z"
+  ]
+}

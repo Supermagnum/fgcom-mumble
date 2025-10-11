@@ -1,1 +1,16 @@
-sample input for fuzz_integration_tests
+{
+  "test_scenario": "radio_audio_integration",
+  "components": [
+    "radio_propagation",
+    "audio_processing", 
+    "frequency_management"
+  ],
+  "test_data": {
+    "frequency": 121.5,
+    "audio_sample_rate": 48000,
+    "propagation_distance": 50.0
+  },
+  "expected_behavior": "clear_audio_transmission",
+  "timeout": 30.0,
+  "retry_count": 3
+}

@@ -1,1 +1,17 @@
-sample input for fuzz_performance_tests
+{
+  "test_type": "load_test",
+  "duration": 300.0,
+  "concurrent_users": 100,
+  "operations_per_second": 50,
+  "metrics": {
+    "cpu_threshold": 80.0,
+    "memory_threshold": 1024.0,
+    "latency_threshold": 100.0,
+    "throughput_threshold": 1000.0
+  },
+  "test_scenarios": [
+    "audio_processing",
+    "radio_transmission",
+    "database_operations"
+  ]
+}

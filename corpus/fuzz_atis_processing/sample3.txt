@@ -1,1 +1,9 @@
-fuzzing input for fuzz_atis_processing
+{
+  "airport": "",
+  "information": null,
+  "timestamp": "",
+  "weather": null,
+  "runways": [],
+  "notams": null,
+  "special_conditions": null
+}

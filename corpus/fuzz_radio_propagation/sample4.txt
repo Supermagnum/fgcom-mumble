@@ -1,0 +1,22 @@
+{
+  "frequency": 300.0,
+  "power": 1000.0,
+  "antenna_height": 1000.0,
+  "distance": 1000.0,
+  "terrain": "urban",
+  "weather": "fog",
+  "atmospheric_pressure": 1013.25,
+  "temperature": -40.0,
+  "humidity": 100.0,
+  "ionospheric_conditions": {
+    "solar_flux": 150.0,
+    "k_index": 5,
+    "a_index": 20
+  },
+  "antenna_pattern": {
+    "type": "directional",
+    "gain": 12.0,
+    "beamwidth": 30.0,
+    "elevation": 5.0
+  }
+}

@@ -1,1 +1,8 @@
-fuzzing input for fuzz_integration_tests
+{
+  "test_scenario": "",
+  "components": [],
+  "test_data": null,
+  "expected_behavior": "",
+  "timeout": 0.0,
+  "retry_count": 0
+}

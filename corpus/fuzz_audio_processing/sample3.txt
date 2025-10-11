@@ -1,1 +1,10 @@
-fuzzing input for fuzz_audio_processing
+{
+  "sample_rate": 0,
+  "channels": 0,
+  "bit_depth": 0,
+  "format": "",
+  "duration": -1.0,
+  "gain": 999.0,
+  "noise_gate": null,
+  "compression": null
+}

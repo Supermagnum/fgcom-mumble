@@ -1,1 +1,9 @@
-fuzzing input for fuzz_error_handling
+{
+  "error_type": "",
+  "severity": null,
+  "message": null,
+  "code": 0,
+  "timestamp": 0,
+  "context": null,
+  "recovery_action": ""
+}

@@ -1,1 +1,35 @@
-test data for fuzz_atis_processing
+{
+  "airport": "EGLL",
+  "information": "B",
+  "timestamp": "202401011800Z",
+  "weather": {
+    "wind": "VRB05KT",
+    "visibility": "9999",
+    "ceiling": "FEW030",
+    "temperature": "8/5",
+    "altimeter": "1013",
+    "remarks": "RA"
+  },
+  "runways": [
+    {
+      "id": "09L/27R",
+      "condition": "DRY",
+      "length": 12802,
+      "width": 150
+    },
+    {
+      "id": "09R/27L", 
+      "condition": "WET",
+      "length": 12802,
+      "width": 150
+    }
+  ],
+  "notams": [
+    "TWY A CLSD 1800-0600Z",
+    "APRON WORK IN PROG"
+  ],
+  "special_conditions": [
+    "BIRD ACTIVITY",
+    "CONSTRUCTION ZONE"
+  ]
+}

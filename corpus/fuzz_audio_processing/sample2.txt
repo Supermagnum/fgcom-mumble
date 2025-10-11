@@ -1,1 +1,19 @@
-test data for fuzz_audio_processing
+{
+  "sample_rate": 44100,
+  "channels": 2,
+  "bit_depth": 24,
+  "format": "IEEE_FLOAT",
+  "duration": 0.1,
+  "gain": 0.5,
+  "noise_gate": -40.0,
+  "agc": {
+    "enabled": true,
+    "target_level": -18.0,
+    "max_gain": 20.0,
+    "min_gain": -20.0
+  },
+  "eq": {
+    "low_shelf": {"freq": 100, "gain": 2.0},
+    "high_shelf": {"freq": 8000, "gain": -1.0}
+  }
+}

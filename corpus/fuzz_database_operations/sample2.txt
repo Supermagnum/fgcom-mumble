@@ -1,1 +1,15 @@
-test data for fuzz_database_operations
+{
+  "operation": "INSERT",
+  "table": "radio_logs",
+  "data": {
+    "frequency": 121.5,
+    "timestamp": 1640995200,
+    "message": "Emergency frequency test",
+    "user_id": 123,
+    "location": {
+      "latitude": 40.7128,
+      "longitude": -74.0060
+    }
+  },
+  "returning": ["id", "created_at"]
+}

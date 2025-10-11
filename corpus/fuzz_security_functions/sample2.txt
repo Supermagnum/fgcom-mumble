@@ -1,1 +1,15 @@
-test data for fuzz_security_functions
+{
+  "operation": "encrypt",
+  "algorithm": "AES-256-GCM",
+  "key": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+  "iv": "0123456789abcdef01234567",
+  "plaintext": "Sensitive radio transmission data",
+  "aad": "additional_authenticated_data",
+  "tag": "authentication_tag_123",
+  "key_derivation": {
+    "algorithm": "PBKDF2",
+    "iterations": 100000,
+    "salt": "derivation_salt_456"
+  },
+  "ciphertext": "encrypted_data_here"
+}

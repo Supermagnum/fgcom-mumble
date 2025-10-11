@@ -1,1 +1,16 @@
-sample input for fuzz_security_functions
+{
+  "operation": "authenticate",
+  "username": "pilot123",
+  "password_hash": "$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewdBPj4J/8KzKz2",
+  "salt": "random_salt_123",
+  "timestamp": 1640995200,
+  "nonce": "abc123def456",
+  "challenge": "security_challenge_789",
+  "certificate": {
+    "subject": "CN=pilot123,O=FGCom-Mumble",
+    "issuer": "CN=CA,O=FGCom-Mumble",
+    "valid_from": "2023-01-01T00:00:00Z",
+    "valid_to": "2024-01-01T00:00:00Z",
+    "fingerprint": "SHA256:12:34:56:78:90:AB:CD:EF:12:34:56:78:90:AB:CD:EF:12:34:56:78:90:AB:CD:EF:12:34:56:78:90:AB:CD:EF"
+  }
+}

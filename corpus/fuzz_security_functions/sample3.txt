@@ -1,1 +1,10 @@
-fuzzing input for fuzz_security_functions
+{
+  "operation": "",
+  "username": null,
+  "password_hash": "",
+  "salt": null,
+  "timestamp": 0,
+  "nonce": "",
+  "challenge": null,
+  "certificate": null
+}

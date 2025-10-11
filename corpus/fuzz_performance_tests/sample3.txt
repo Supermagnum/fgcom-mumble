@@ -1,1 +1,8 @@
-fuzzing input for fuzz_performance_tests
+{
+  "test_type": "",
+  "duration": 0.0,
+  "concurrent_users": 0,
+  "operations_per_second": 0,
+  "metrics": null,
+  "test_scenarios": []
+}
