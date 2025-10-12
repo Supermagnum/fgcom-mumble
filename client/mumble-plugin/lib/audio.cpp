@@ -17,6 +17,9 @@
 #include "audio.h"
 #include "noise/phil_burk_19990905_patest_pink.c"  // pink noise generator from  Phil Burk, http://www.softsynth.com
 #include "frequency_offset.h"
+#include "globalVars.h"
+#include "mumble/MumbleAPI_v_1_0_x.h"
+#include "io_plugin.h"
 
 // DSP Filter framework; i want it statically in audio.o without adjusting makefile (so we can swap easily later if needed)
 #include "DspFilters/Dsp.h"
@@ -180,7 +183,7 @@ void fgcom_audio_filter(int highpass_cutoff, int lowpass_cutoff, float *outputPC
     if (sampleCount > 48000 || channelCount > 8) {
         pluginLog("[AUDIO] SECURITY WARNING: Audio parameters exceed safe limits, clamping");
         sampleCount = std::min(sampleCount, 48000u);
-        channelCount = std::min(channelCount, 8u);
+        channelCount = std::min(channelCount, static_cast<uint16_t>(8));
     }
     
     uint32_t ai = 0;
