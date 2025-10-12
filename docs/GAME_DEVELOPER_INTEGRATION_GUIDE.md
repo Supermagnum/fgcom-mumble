@@ -1341,7 +1341,33 @@ if (!pattern_info.antenna_name.empty()) {
 
 ### **How to Make Antenna Pattern Files**
 
-#### **1. Using the Pattern Generation Tool**
+#### **1. Using 3D Vehicle Models with STL-to-NEC Converter**
+
+For creating antenna patterns from 3D vehicle models, use the [STL-to-NEC Converter Tool](https://github.com/Supermagnum/stl-to-nec):
+
+**Features:**
+- **3D Model Support**: Convert STL files of vehicles (ships, aircraft, cars) into electromagnetic simulation files
+- **Automatic Detection**: Detects antenna wires in 3D models automatically
+- **Material Properties**: Calculates proper electromagnetic material properties
+- **Frequency Analysis**: Determines correct grid spacing based on operating frequency
+- **Marine Support**: Special support for ships/boats with waterline modeling
+- **Cross-platform**: Linux, Windows, macOS support
+
+**Workflow:**
+1. **Create 3D Model**: Design your vehicle in CAD software (Blender, SolidWorks, etc.)
+2. **Export STL**: Export the 3D model as STL file format
+3. **Convert with STL-to-NEC**: Use the converter tool to generate simulation files
+4. **Import to EZNEC**: Load the generated files into electromagnetic simulation software
+5. **Run Simulation**: Perform antenna pattern analysis
+6. **Export Pattern**: Save the radiation pattern data for FGCom-mumble integration
+
+**Compatible Software:**
+- **4NEC2** (Free) - Most popular NEC-based antenna modeling software
+- **EZNEC** (Commercial) - Professional antenna modeling
+- **NEC-Win Plus** (Commercial) - Advanced NEC modeling
+- **MMANA-GAL** (Free) - Antenna modeling and optimization
+
+#### **2. Using the Pattern Generation Tool**
 
 **Generate patterns for ground-based antennas:**
 ```bash

@@ -3,6 +3,7 @@
 - [Creating Radiation Patterns Guide](docs/TECHNICAL_DOCUMENTATION.md#antenna-patterns) Complete guide for creating radiation pattern files
 - [EZNEC Workflow Guide](docs/TECHNICAL_DOCUMENTATION.md#antenna-patterns) Step-by-step EZNEC workflow for pattern creation
 - [Antenna Modeling Tools](docs/TECHNICAL_DOCUMENTATION.md#antenna-patterns) Tools and software for antenna modeling
+- [STL-to-NEC Converter Tool](https://github.com/Supermagnum/stl-to-nec) Convert 3D STL vehicle models to EZ/NEC electromagnetic simulation files
 - [Radiation Pattern Examples](docs/2M_YAGI_ANTENNA_SUMMARY.md) Practical examples for different vehicle types
 - [2M Yagi Antenna Summary](docs/2M_YAGI_ANTENNA_SUMMARY.md) Professional 2m Yagi antenna specifications
 
@@ -21,3 +22,28 @@
 - **Progress reporting**: The script includes progress reporting showing altitude bands and completion percentage
 
 **[Available Radiation Patterns](docs/technical/available_patterns.md)** - Complete list of radiation patterns currently available in the repository
+
+## 3D Vehicle Model to Antenna Pattern Conversion
+
+### **STL-to-NEC Converter Tool**
+
+For creating antenna patterns from 3D vehicle models, use the [STL-to-NEC Converter Tool](https://github.com/Supermagnum/stl-to-nec):
+
+- **Purpose**: Convert 3D STL models of vehicles (ships, aircraft, cars) into electromagnetic simulation files
+- **Output Formats**: Generates both NEC and EZ files for different simulation software
+- **Features**: 
+  - Automatic antenna wire detection in 3D models
+  - Material property calculation for electromagnetic simulation
+  - Proper grid spacing based on operating frequency
+  - Support for marine vehicles with waterline modeling
+- **Compatible Software**: 4NEC2, EZNEC, NEC-Win Plus, MMANA-GAL
+- **Cross-platform**: Linux, Windows, macOS support
+
+### **Workflow for Vehicle Antenna Patterns**
+
+1. **Create 3D Model**: Design your vehicle in CAD software (Blender, SolidWorks, etc.)
+2. **Export STL**: Export the 3D model as STL file format
+3. **Convert with STL-to-NEC**: Use the converter tool to generate simulation files
+4. **Import to EZNEC**: Load the generated files into electromagnetic simulation software
+5. **Run Simulation**: Perform antenna pattern analysis
+6. **Export Pattern**: Save the radiation pattern data for FGCom-mumble integration
